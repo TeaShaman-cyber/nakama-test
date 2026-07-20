@@ -13,3 +13,4 @@ YYYY-MM-DD-short-title.md
 ## Записи
 
 - [2026-07-15 — Турбина для сарая](2026-07-15-turbina-dlya-saraya.md)
+- [2026-07-20 — Ключница и три турникета](2026-07-20-klyuchnitsa-i-tri-turknika.md)
