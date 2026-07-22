@@ -1,7 +1,7 @@
 # GitHub Pages blog design
 
 Date: 2026-07-22
-Status: Approved design, implementation not started
+Status: Reviewed contract candidate, implementation not started
 Repository: `TeaShaman-cyber/nakama-test`
 
 ## Goal
@@ -160,25 +160,63 @@ Exact language/runtime for the generator should be selected during implementatio
 
 ## URL policy
 
-Stable URLs should derive from the existing journal filename slug, for example:
+Stable URLs should derive from the existing journal filename slug, but generation MUST be base-path aware. For a project Pages site, the deployment root may include the repository name (for example `/nakama-test/`); a later custom domain may move the effective base path back to `/`.
+
+Example logical route:
 
 ```text
-/journal/2026-07-21-kvantovyi-chai-chainik-na-portu-8080/
+journal/2026-07-21-kvantovyi-chai-chainik-na-portu-8080/
 ```
+
+The generator MUST receive or derive the effective Pages base URL/path and use it for internal links and static assets. Root-relative `/journal/...` or `/static/...` links are forbidden unless the verified deployment base is `/`.
 
 The source filename remains authoritative for slug identity. Renaming a published Markdown file should be treated as a publication migration and should preserve redirects when feasible.
 
 ## Build and deployment
 
-GitHub Actions should:
-1. check out `main`;
-2. run generator tests/validation;
-3. generate the static site into a deployment directory;
-4. upload the Pages artifact;
-5. deploy through GitHub Pages official Actions flow;
+GitHub Actions should use two explicit jobs.
+
+Build job:
+1. check out `main` with read-only repository contents permission;
+2. configure Pages and obtain deployment metadata/base path;
+3. run generator tests/validation;
+4. generate the static site into a deployment directory;
+5. upload the Pages artifact;
 6. fail clearly without modifying canonical Markdown.
 
+Deploy job:
+1. depend on the successful build job via `needs`;
+2. run in the `github-pages` environment;
+3. request only `pages: write` and `id-token: write` in addition to read-only contents where required;
+4. deploy only the uploaded Pages artifact using the official Pages deployment action.
+
+The workflow MUST NOT commit generated HTML back into `main`, `journal/`, or a hand-maintained `gh-pages` publication branch.
+
 Pages should deploy only from the repository workflow/artifact path, not from an independently edited branch containing hand-maintained HTML.
+
+## Security and deployment permissions
+
+- Build has no write authority over canonical repository content.
+- Deploy receives only the permissions required by the official Pages artifact flow.
+- No article publication or site build requires long-lived custom secrets for GitHub Pages.
+- Third-party Actions are avoided in the critical deployment path unless separately reviewed and pinned.
+- The `github-pages` environment is the deployment boundary; branch/environment protection should restrict deployment to the intended default-branch workflow.
+- A successful deployment proves only the presentation artifact is live; it does not upgrade editorial or Git authority.
+
+## Formal state model
+
+The companion machine-checkable projection is stored at:
+
+`docs/superpowers/specs/2026-07-22-github-pages-blog-wolfram-projection.wl`
+
+Safety invariants include:
+- `Published -> GitReadbackVerified`;
+- `SiteVerified -> Published`;
+- `SiteDegraded -> Published` is allowed;
+- `SiteVerified` and `SiteDegraded` are mutually exclusive for one deployment attempt;
+- every site terminal preserves canonical Markdown;
+- Pages build/deploy cannot write canonical Markdown;
+- build failure and deploy failure terminate as site degradation without invalidating verified Git publication.
 
 ## Validation and error handling
 
@@ -269,3 +307,11 @@ Explicitly out of scope for version 1:
 ## Success criteria
 
 The design is successful when a reader can open the GitHub Pages site, comfortably browse the Jester journal and recurring series, and always reach the underlying Git source/history, while the site remains disposable and rebuildable from the repository alone.
+
+## Review record — 2026-07-22
+
+- Specialist conclave: Formal Methods, SRE/Reliability, Security, Static-Site/Release, Persistence/Data, Operations/UX.
+- Material defect found and repaired: project-site base path was implicit while examples used root-relative URLs.
+- GitHub official documentation confirms the custom Actions artifact flow, separate deploy permissions, `github-pages` environment, and build-to-deploy dependency pattern.
+- Agora adversarial review supported authority separation and independent site-failure semantics, but its GitHub-specific evidence set was weak; Agora contribution is therefore advisory/DEGRADED, not authoritative.
+- Wolfram satisfiability check confirmed that `Publication VERIFIED + Site DEGRADED + CanonicalPreserved` is a consistent state while site writes to canonical content remain forbidden.
