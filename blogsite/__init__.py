@@ -1,0 +1,1 @@
+"""Static blog generator package."""

@@ -8,6 +8,10 @@
 
 **Tech Stack:** Python 3.13, Python-Markdown 3.10.2, stdlib `unittest`, plain HTML/CSS, `actions/checkout@v6`, `actions/setup-python@v6`, `actions/configure-pages@v5`, `actions/upload-pages-artifact@v4`, `actions/deploy-pages@v4`.
 
+## Execution correction — 2026-07-22
+
+The planned Python package name `site` conflicts with Python's standard-library `site` module, which is imported at interpreter startup. Implementation paths are therefore `blogsite/` while public URLs remain unchanged. This is an implementation-only namespace correction and does not alter the approved architecture contract.
+
 ## Global Constraints
 
 - `journal/*.md` plus Git history remain public authority.
@@ -56,7 +60,7 @@ README.md
 
 ### Task 1: Content model and discovery
 
-**Files:** Create `.python-version`, `site/__init__.py`, `site/requirements.txt`, `site/model.py`, `site/content.py`, `site/metadata.json`, fixture files, `site/tests/test_content.py`.
+**Files:** Create `.python-version`, `blogsite/__init__.py`, `blogsite/requirements.txt`, `blogsite/model.py`, `blogsite/content.py`, `blogsite/metadata.json`, fixture files, `blogsite/tests/test_content.py`.
 
 **Interfaces:** Produces `Article`, `AboutPage`, `SiteMetadata`, `discover_articles()`, `load_about_page()`, `load_series_map()`, `extract_excerpt()`.
 
@@ -65,7 +69,7 @@ README.md
 ```python
 from pathlib import Path
 import unittest
-from site.content import discover_articles, extract_excerpt, load_about_page, load_series_map
+from blogsite.content import discover_articles, extract_excerpt, load_about_page, load_series_map
 
 FIXTURES = Path(__file__).parent / "fixtures"
 
@@ -160,7 +164,7 @@ from datetime import date
 import json
 from pathlib import Path
 import re
-from site.model import AboutPage, Article, SiteMetadata
+from blogsite.model import AboutPage, Article, SiteMetadata
 
 _FILENAME_DATE = re.compile(r"^(\d{4}-\d{2}-\d{2})-")
 _METADATA = re.compile(r"```text\n(?P<body>.*?)\n```", re.DOTALL)
@@ -223,12 +227,12 @@ def load_about_page(path: Path) -> AboutPage:
     return AboutPage(path.name, path.stem, _title(text), text)
 ```
 
-Create `.python-version` = `3.13`, `site/requirements.txt` = `Markdown==3.10.2`, and a body-free `site/metadata.json` keyed by current published filenames with verified Notion series arrays.
+Create `.python-version` = `3.13`, `blogsite/requirements.txt` = `Markdown==3.10.2`, and a body-free `blogsite/metadata.json` keyed by current published filenames with verified Notion series arrays.
 
 - [ ] **Step 5: Run GREEN and commit**
 
 ```bash
-python3 -m pip install -r site/requirements.txt
+python3 -m pip install -r blogsite/requirements.txt
 python3 -m unittest site.tests.test_content -v
 git add .python-version site
 git commit -m "feat: add blog content model and discovery"
@@ -240,7 +244,7 @@ Expected: PASS.
 
 ### Task 2: Base-path-safe URLs
 
-**Files:** Create `site/urls.py`, `site/tests/test_urls.py`.
+**Files:** Create `blogsite/urls.py`, `blogsite/tests/test_urls.py`.
 
 **Interfaces:** Produces `normalize_base_path`, `site_url`, `article_url`, `slugify_series`, `series_url`, `source_url`, `history_url`.
 
@@ -248,7 +252,7 @@ Expected: PASS.
 
 ```python
 import unittest
-from site.urls import article_url, history_url, series_url, site_url, source_url
+from blogsite.urls import article_url, history_url, series_url, site_url, source_url
 
 class UrlTests(unittest.TestCase):
     def test_project_pages_base_path(self):
@@ -306,7 +310,7 @@ def history_url(source_name: str) -> str:
 
 ```bash
 python3 -m unittest site.tests.test_urls -v
-git add site/urls.py site/tests/test_urls.py
+git add blogsite/urls.py blogsite/tests/test_urls.py
 git commit -m "feat: add base-path-safe blog URLs"
 ```
 
@@ -314,7 +318,7 @@ git commit -m "feat: add base-path-safe blog URLs"
 
 ### Task 3: Rendering and visual identity
 
-**Files:** Create `site/render.py`, five templates, `site/static/style.css`, `site/static/favicon.svg`, `site/tests/test_render.py`.
+**Files:** Create `blogsite/render.py`, five templates, `blogsite/static/style.css`, `blogsite/static/favicon.svg`, `blogsite/tests/test_render.py`.
 
 **Interfaces:** Produces `render_home`, `render_index`, `render_article`, `render_about`.
 
@@ -323,8 +327,8 @@ git commit -m "feat: add base-path-safe blog URLs"
 ```python
 from datetime import date
 import unittest
-from site.model import Article
-from site.render import render_article, render_home
+from blogsite.model import Article
+from blogsite.render import render_article, render_home
 
 ARTICLE = Article("2026-01-01-test.md", "2026-01-01-test", "Тестовая запись", date(2026,1,1), "# Тестовая запись\n\n> Цитата\n\n```text\nPASS\n```", "Цитата", ("Квантовый чай",))
 
@@ -374,7 +378,7 @@ Home template MUST contain `Привет, мир. Я — Шут.` and a `$latest
 
 - [ ] **Step 5: Add accepted visual tokens**
 
-`site/static/style.css` starts with:
+`blogsite/static/style.css` starts with:
 
 ```css
 :root { --paper:#f4efe4; --paper-deep:#e8dfcf; --ink:#25231f; --muted:#756e64; --line:#cfc3af; --accent:#7d4938; --code:#292723; --code-ink:#f5efe3; --measure:72rem; }
@@ -386,7 +390,7 @@ Requirements: serif long-form body, monospace technical labels/code, generous wh
 
 ```bash
 python3 -m unittest site.tests.test_render -v
-git add site/render.py site/templates site/static site/tests/test_render.py
+git add blogsite/render.py blogsite/templates blogsite/static blogsite/tests/test_render.py
 git commit -m "feat: render Jester blog pages"
 ```
 
@@ -394,9 +398,9 @@ git commit -m "feat: render Jester blog pages"
 
 ### Task 4: Deterministic build
 
-**Files:** Create `site/build.py`, `site/tests/test_build.py`; modify `.gitignore`.
+**Files:** Create `blogsite/build.py`, `blogsite/tests/test_build.py`; modify `.gitignore`.
 
-**Interfaces:** Produces `build_site(repo_root: Path, output_dir: Path, base_path: str) -> None` and `python -m site.build`.
+**Interfaces:** Produces `build_site(repo_root: Path, output_dir: Path, base_path: str) -> None` and `python -m blogsite.build`.
 
 - [ ] **Step 1: Write integration test** asserting build creates:
 
@@ -422,9 +426,9 @@ python3 -m unittest site.tests.test_build -v
 ```python
 import argparse, shutil
 from pathlib import Path
-from site.content import discover_articles, load_about_page, load_series_map
-from site.render import render_about, render_article, render_home, render_index
-from site.urls import slugify_series
+from blogsite.content import discover_articles, load_about_page, load_series_map
+from blogsite.render import render_about, render_article, render_home, render_index
+from blogsite.urls import slugify_series
 
 def _write(path: Path, text: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True); path.write_text(text, encoding="utf-8")
@@ -446,7 +450,7 @@ def build_site(repo_root: Path, output_dir: Path, base_path: str) -> None:
     for name in ("continuity", "method"):
         page = load_about_page(repo_root / "about" / f"{name}.md")
         _write(output_dir / "about" / name / "index.html", render_about(page, base_path))
-    shutil.copytree(repo_root / "site/static", output_dir / "static")
+    shutil.copytree(repo_root / "blogsite/static", output_dir / "static")
 ```
 
 CLI adds `--repo-root`, `--output`, `--base-path` and calls `build_site()`.
@@ -463,7 +467,7 @@ __pycache__/
 
 ```bash
 python3 -m unittest site.tests.test_build -v
-python3 -m site.build --repo-root . --output public --base-path /nakama-test/
+python3 -m blogsite.build --repo-root . --output public --base-path /nakama-test/
 test -f public/index.html
 test -f public/journal/2026-07-22-dazhe-neiroset-nachinaet-materitsya/index.html
 ```
@@ -471,7 +475,7 @@ test -f public/journal/2026-07-22-dazhe-neiroset-nachinaet-materitsya/index.html
 - [ ] **Step 6: Commit**
 
 ```bash
-git add .gitignore site/build.py site/tests/test_build.py
+git add .gitignore blogsite/build.py blogsite/tests/test_build.py
 git commit -m "feat: build deterministic static blog"
 ```
 
@@ -479,7 +483,7 @@ git commit -m "feat: build deterministic static blog"
 
 ### Task 5: Validation and canonical-write guard
 
-**Files:** Create `site/validate.py`, `site/tests/test_validate.py`; modify `site/build.py`.
+**Files:** Create `blogsite/validate.py`, `blogsite/tests/test_validate.py`; modify `blogsite/build.py`.
 
 **Interfaces:** Produces `validate_source_slugs`, `validate_generated_links`, `snapshot_canonical`, `assert_canonical_unchanged`.
 
@@ -527,9 +531,9 @@ assert_canonical_unchanged(before, snapshot_canonical(repo_root))
 - [ ] **Step 5: Full suite + canonical diff**
 
 ```bash
-python3 -m unittest discover -s site/tests -v
+python3 -m unittest discover -s blogsite/tests -v
 rm -rf public
-python3 -m site.build --repo-root . --output public --base-path /nakama-test/
+python3 -m blogsite.build --repo-root . --output public --base-path /nakama-test/
 git diff --exit-code -- README.md about journal archive
 ```
 
@@ -538,7 +542,7 @@ Expected: PASS and zero canonical diff.
 - [ ] **Step 6: Commit**
 
 ```bash
-git add site/validate.py site/tests/test_validate.py site/build.py
+git add blogsite/validate.py blogsite/tests/test_validate.py blogsite/build.py
 git commit -m "test: enforce blog build invariants"
 ```
 
@@ -570,12 +574,12 @@ jobs:
         with:
           python-version: "3.13"
           cache: pip
-          cache-dependency-path: site/requirements.txt
-      - run: python -m pip install -r site/requirements.txt
+          cache-dependency-path: blogsite/requirements.txt
+      - run: python -m pip install -r blogsite/requirements.txt
       - id: pages
         uses: actions/configure-pages@v5
-      - run: python -m unittest discover -s site/tests -v
-      - run: python -m site.build --repo-root . --output public --base-path "${{ steps.pages.outputs.base_path }}"
+      - run: python -m unittest discover -s blogsite/tests -v
+      - run: python -m blogsite.build --repo-root . --output public --base-path "${{ steps.pages.outputs.base_path }}"
       - run: git diff --exit-code -- README.md about journal archive
       - uses: actions/upload-pages-artifact@v4
         with:
@@ -611,9 +615,9 @@ PY
 - [ ] **Step 3: Run local gate and commit**
 
 ```bash
-python3 -m unittest discover -s site/tests -v
+python3 -m unittest discover -s blogsite/tests -v
 rm -rf public
-python3 -m site.build --repo-root . --output public --base-path /nakama-test/
+python3 -m blogsite.build --repo-root . --output public --base-path /nakama-test/
 git diff --exit-code -- README.md about journal archive
 git add .github/workflows/pages.yml
 git commit -m "ci: deploy Jester blog with GitHub Pages"
@@ -704,10 +708,10 @@ test "$LOCAL_SHA" = "$REMOTE_SHA"
 - [ ] **Step 1: Fresh local test/build/canonical guard**
 
 ```bash
-python3 -m pip install -r site/requirements.txt
-python3 -m unittest discover -s site/tests -v
+python3 -m pip install -r blogsite/requirements.txt
+python3 -m unittest discover -s blogsite/tests -v
 rm -rf public
-python3 -m site.build --repo-root . --output public --base-path /nakama-test/
+python3 -m blogsite.build --repo-root . --output public --base-path /nakama-test/
 git diff --exit-code -- README.md about journal archive
 ```
 
