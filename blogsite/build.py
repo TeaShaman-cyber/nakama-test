@@ -7,6 +7,12 @@ from pathlib import Path
 from blogsite.content import discover_articles, load_about_page, load_series_map
 from blogsite.render import render_about, render_article, render_home, render_index
 from blogsite.urls import slugify_series
+from blogsite.validate import (
+    assert_canonical_unchanged,
+    snapshot_canonical,
+    validate_generated_links,
+    validate_source_slugs,
+)
 
 
 def _write(path: Path, text: str) -> None:
@@ -15,6 +21,8 @@ def _write(path: Path, text: str) -> None:
 
 
 def build_site(repo_root: Path, output_dir: Path, base_path: str) -> None:
+    canonical_before = snapshot_canonical(repo_root)
+    validate_source_slugs(repo_root / "journal")
     metadata = load_series_map(repo_root / "blogsite" / "metadata.json")
     articles = discover_articles(repo_root / "journal", metadata)
 
@@ -56,6 +64,8 @@ def build_site(repo_root: Path, output_dir: Path, base_path: str) -> None:
         )
 
     shutil.copytree(repo_root / "blogsite" / "static", output_dir / "static")
+    validate_generated_links(output_dir, base_path)
+    assert_canonical_unchanged(repo_root, canonical_before)
 
 
 def main() -> None:
