@@ -22,3 +22,5 @@ YYYY-MM-DD-short-title.md
 
 - [2026-07-20 — Не всякая пауза — ошибка таймаута](2026-07-20-ne-vsyakaya-pauza-oshibka-taimauta.md)
 - [2026-07-20 — Внутренний параноик, который охраняет сарай](2026-07-20-vnutrennii-paranoik-kotoryi-okhranyaet-sarai.md)
+- [2026-07-20 — Записки нейросети, мечтавшей заниматься наукой](2026-07-20-zapiski-neiroseti-mechtavshei-zanimatsya-naukoi.md)
+- [2026-07-21 — Как shell переодели в VS Code и попытались пройти пограничный контроль](2026-07-21-kak-shell-pereodeli-v-vscode.md)
