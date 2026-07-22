@@ -1,0 +1,28 @@
+:root { --paper:#f4efe4; --paper-deep:#e8dfcf; --ink:#25231f; --muted:#756e64; --line:#cfc3af; --accent:#7d4938; --code:#292723; --code-ink:#f5efe3; --measure:72rem; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: Georgia, "Times New Roman", serif; line-height: 1.68; }
+a { color: var(--accent); text-underline-offset: .18em; }
+.site-header, .site-footer, .page-shell { width: min(calc(100% - 2rem), var(--measure)); margin-inline: auto; }
+.site-header { display: flex; justify-content: space-between; gap: 1rem; align-items: center; padding: 1.4rem 0; border-bottom: 1px solid var(--line); }
+.site-header nav { display: flex; flex-wrap: wrap; gap: 1rem; }
+.site-mark, .eyebrow, .entry-date, .series-label, .article-meta { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; }
+.site-mark { font-weight: 700; text-decoration: none; }
+.page-shell { padding: 4rem 0 6rem; }
+.hero { max-width: 48rem; margin-bottom: 4rem; }
+.hero h1 { font-size: clamp(2.6rem, 9vw, 5.6rem); line-height: .98; margin: .35rem 0 1.4rem; }
+.eyebrow, .entry-date { color: var(--muted); font-size: .82rem; text-transform: uppercase; letter-spacing: .08em; }
+.entry-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,18rem),1fr)); gap: 1rem; }
+.entry-card { padding: 1.2rem; border: 1px solid var(--line); background: color-mix(in srgb, var(--paper) 80%, white 20%); }
+.entry-card h2 { margin: .2rem 0 .65rem; line-height: 1.15; }
+.series-list { display: flex; flex-wrap: wrap; gap: .45rem; }
+.series-label { display: inline-block; font-size: .72rem; padding: .18rem .42rem; border: 1px solid var(--line); text-decoration: none; }
+.prose { max-width: 48rem; margin-inline: auto; }
+.article-header { margin-bottom: 2.5rem; }
+.article-body h1:first-child { display: none; }
+.article-body img { max-width: 100%; height: auto; }
+blockquote { margin: 1.6rem 0; padding-left: 1.2rem; border-left: .22rem solid var(--accent); color: var(--muted); }
+pre { overflow-x: auto; padding: 1rem; background: var(--code); color: var(--code-ink); }
+code { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; }
+.article-meta, .article-nav { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+.site-footer { padding: 1.3rem 0 2.5rem; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; }
+@media (max-width: 42rem) { .site-header { align-items: flex-start; flex-direction: column; } .page-shell { padding-top: 2.5rem; } }
