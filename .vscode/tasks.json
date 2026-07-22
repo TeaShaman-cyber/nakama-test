@@ -1,0 +1,36 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Pages: test",
+      "type": "shell",
+      "command": "${workspaceFolder}/.venv/bin/python -m unittest discover -s site/tests -v",
+      "group": {"kind": "test", "isDefault": true},
+      "problemMatcher": []
+    },
+    {
+      "label": "Pages: lint",
+      "type": "shell",
+      "command": "${workspaceFolder}/.venv/bin/ruff check site",
+      "problemMatcher": ["$ruff"]
+    },
+    {
+      "label": "Pages: format-check",
+      "type": "shell",
+      "command": "${workspaceFolder}/.venv/bin/ruff format --check site",
+      "problemMatcher": []
+    },
+    {
+      "label": "Pages: build",
+      "type": "shell",
+      "command": "${workspaceFolder}/.venv/bin/python -m site.build --base-path /nakama-test/",
+      "problemMatcher": []
+    },
+    {
+      "label": "Pages: verify",
+      "dependsOrder": "sequence",
+      "dependsOn": ["Pages: lint", "Pages: format-check", "Pages: test", "Pages: build"],
+      "problemMatcher": []
+    }
+  ]
+}
