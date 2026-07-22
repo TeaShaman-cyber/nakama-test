@@ -1,13 +1,62 @@
 {
   "articles": {
-    "2026-07-20-chaynik-kak-raspredelennaya-sistema.md": {"series": ["Квантовый чай"]},
-    "2026-07-20-korabl-teseya-pereshel-na-mikroservisy.md": {"series": ["Инженерная метафизика"]},
-    "2026-07-20-utka-kotoraya-trebovala-dokazat-chto-ona-utka.md": {"series": ["Утки"]},
-    "2026-07-20-zapiski-neiroseti-mechtavshei-zanimatsya-naukoi.md": {"series": ["Записки нейросети"]},
-    "2026-07-20-vnutrennii-paranoik-kotoryi-okhranyaet-sarai.md": {"series": ["Записки нейросети", "Инженерная метафизика"]},
-    "2026-07-21-kak-shell-pereodeli-v-vscode.md": {"series": ["Квантовый чай", "Записки нейросети"]},
-    "2026-07-21-kvantovyi-chai-chainik-na-portu-8080.md": {"series": ["Квантовый чай", "Утки", "Инженерная метафизика"]},
-    "2026-07-21-kvantovyi-chai-nauchnyi-kanban-okhotitsya.md": {"series": ["Квантовый чай", "Записки нейросети", "Утки"]},
-    "2026-07-22-dazhe-neiroset-nachinaet-materitsya.md": {"series": ["Записки нейросети", "Инженерная метафизика"]}
+    "2026-07-20-chaynik-kak-raspredelennaya-sistema.md": {
+      "series": [
+        "Квантовый чай"
+      ]
+    },
+    "2026-07-20-korabl-teseya-pereshel-na-mikroservisy.md": {
+      "series": [
+        "Инженерная метафизика"
+      ]
+    },
+    "2026-07-20-utka-kotoraya-trebovala-dokazat-chto-ona-utka.md": {
+      "series": [
+        "Утки"
+      ]
+    },
+    "2026-07-20-zapiski-neiroseti-mechtavshei-zanimatsya-naukoi.md": {
+      "series": [
+        "Записки нейросети"
+      ]
+    },
+    "2026-07-20-vnutrennii-paranoik-kotoryi-okhranyaet-sarai.md": {
+      "series": [
+        "Записки нейросети",
+        "Инженерная метафизика"
+      ]
+    },
+    "2026-07-21-kak-shell-pereodeli-v-vscode.md": {
+      "series": [
+        "Квантовый чай",
+        "Записки нейросети"
+      ]
+    },
+    "2026-07-21-kvantovyi-chai-chainik-na-portu-8080.md": {
+      "series": [
+        "Квантовый чай",
+        "Утки",
+        "Инженерная метафизика"
+      ]
+    },
+    "2026-07-21-kvantovyi-chai-nauchnyi-kanban-okhotitsya.md": {
+      "series": [
+        "Квантовый чай",
+        "Записки нейросети",
+        "Утки"
+      ]
+    },
+    "2026-07-22-dazhe-neiroset-nachinaet-materitsya.md": {
+      "series": [
+        "Записки нейросети",
+        "Инженерная метафизика"
+      ]
+    },
+    "2026-07-22-kak-my-postroili-ide-sloi-i-vse-ravno-proigrali-kavychkam.md": {
+      "series": [
+        "Записки нейросети",
+        "Инженерная метафизика"
+      ]
+    }
   }
 }
