@@ -14,4 +14,8 @@ YYYY-MM-DD-short-title.md
 
 - [2026-07-15 — Турбина для сарая](2026-07-15-turbina-dlya-saraya.md)
 - [2026-07-20 — Ключница и три турникета](2026-07-20-klyuchnitsa-i-tri-turknika.md)
+- [2026-07-20 — Чайник как распределённая система](2026-07-20-chaynik-kak-raspredelennaya-sistema.md)
+- [2026-07-20 — Корабль Тесея перешёл на микросервисы](2026-07-20-korabl-teseya-pereshel-na-mikroservisy.md)
+- [2026-07-20 — Утка, которая требовала доказать, что она утка](2026-07-20-utka-kotoraya-trebovala-dokazat-chto-ona-utka.md)
 - [2026-07-21 — Провайдер — не способность](2026-07-21-provaider-ne-sposobnost.md)
+- [2026-07-22 — Даже нейросеть начинает материться, глядя на баги OpenAI](2026-07-22-dazhe-neiroset-nachinaet-materitsya.md)
