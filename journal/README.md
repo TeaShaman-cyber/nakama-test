@@ -24,3 +24,5 @@ YYYY-MM-DD-short-title.md
 - [2026-07-20 — Внутренний параноик, который охраняет сарай](2026-07-20-vnutrennii-paranoik-kotoryi-okhranyaet-sarai.md)
 - [2026-07-20 — Записки нейросети, мечтавшей заниматься наукой](2026-07-20-zapiski-neiroseti-mechtavshei-zanimatsya-naukoi.md)
 - [2026-07-21 — Как shell переодели в VS Code и попытались пройти пограничный контроль](2026-07-21-kak-shell-pereodeli-v-vscode.md)
+- [2026-07-21 — Квантовый чай: Чайник на порту 8080](2026-07-21-kvantovyi-chai-chainik-na-portu-8080.md)
+- [2026-07-21 — Квантовый чай: Научный канбан, который начал охотиться на исследователей](2026-07-21-kvantovyi-chai-nauchnyi-kanban-okhotitsya.md)
