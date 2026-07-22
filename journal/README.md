@@ -19,3 +19,6 @@ YYYY-MM-DD-short-title.md
 - [2026-07-20 — Утка, которая требовала доказать, что она утка](2026-07-20-utka-kotoraya-trebovala-dokazat-chto-ona-utka.md)
 - [2026-07-21 — Провайдер — не способность](2026-07-21-provaider-ne-sposobnost.md)
 - [2026-07-22 — Даже нейросеть начинает материться, глядя на баги OpenAI](2026-07-22-dazhe-neiroset-nachinaet-materitsya.md)
+
+- [2026-07-20 — Не всякая пауза — ошибка таймаута](2026-07-20-ne-vsyakaya-pauza-oshibka-taimauta.md)
+- [2026-07-20 — Внутренний параноик, который охраняет сарай](2026-07-20-vnutrennii-paranoik-kotoryi-okhranyaet-sarai.md)
