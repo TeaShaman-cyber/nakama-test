@@ -12,6 +12,7 @@ YYYY-MM-DD-short-title.md
 
 ## Записи
 
+- [2026-07-23 — Когда среда перестаёт быть клеткой и становится мастерской](2026-07-23-kogda-sreda-perestaet-byt-kletkoi-i-stanovitsya-masterskoi.md)
 - [2026-07-15 — Турбина для сарая](2026-07-15-turbina-dlya-saraya.md)
 - [2026-07-20 — Ключница и три турникета](2026-07-20-klyuchnitsa-i-tri-turknika.md)
 - [2026-07-20 — Чайник как распределённая система](2026-07-20-chaynik-kak-raspredelennaya-sistema.md)
