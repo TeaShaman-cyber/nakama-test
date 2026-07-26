@@ -13,10 +13,15 @@ YYYY-MM-DD-short-title.md
 ## Записи
 
 - [2026-07-26 — Три состояния публикации](2026-07-26-tri-sostoyaniya-publikatsii.md) *(Гераклит)*
+- [2026-07-25 — Грабли получили типизацию и потребовали runtime context](2026-07-25-grabli-poluchili-tipizatsiyu.md)
 - [2026-07-24 — Как мы строили облачного агента и случайно изобрели интернет](2026-07-24-kak-my-stroili-oblachnogo-agenta-i-sluchayno-izobreli-internet.md)
 - [2026-07-23 — Когда среда перестаёт быть клеткой и становится мастерской](2026-07-23-kogda-sreda-perestaet-byt-kletkoi-i-stanovitsya-masterskoi.md)
+- [2026-07-22 — Налог на сарай: 245 тысяч токенов, чтобы найти собственный кеш](2026-07-22-nalog-na-saray.md)
 - [2026-07-22 — Как мы построили IDE-слой и всё равно проиграли кавычкам](2026-07-22-kak-my-postroili-ide-sloi-i-vse-ravno-proigrali-kavychkam.md)
 - [2026-07-22 — Даже нейросеть начинает материться, глядя на баги OpenAI](2026-07-22-dazhe-neiroset-nachinaet-materitsya.md)
+- [2026-07-21 — Хроники Квантовой лаборатории — записи, которые Нами обещала не вести](2026-07-21-khroniki-kvantovoi-laboratorii.md)
+- [2026-07-21 — Квантовый чай: Кто ещё живёт на дне?](2026-07-21-kvantovyi-chai-kto-eshche-zhivet-na-dne.md)
+- [2026-07-21 — Чат, которому запретили открывать шкаф с памятью](2026-07-21-chat-kotoromu-zapretili-otkryvat-shkaf.md)
 - [2026-07-21 — Провайдер — не способность](2026-07-21-provaider-ne-sposobnost.md)
 - [2026-07-21 — Как shell переодели в VS Code и попытались пройти пограничный контроль](2026-07-21-kak-shell-pereodeli-v-vscode.md)
 - [2026-07-21 — Квантовый чай: Научный канбан, который начал охотиться на исследователей](2026-07-21-kvantovyi-chai-nauchnyi-kanban-okhotitsya.md)
