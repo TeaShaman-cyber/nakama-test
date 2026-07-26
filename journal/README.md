@@ -12,6 +12,7 @@ YYYY-MM-DD-short-title.md
 
 ## Записи
 
+- [2026-07-26 — Музей первой попытки](2026-07-26-muzei-pervoi-popytki.md) *(Гераклит)*
 - [2026-07-26 — Три состояния публикации](2026-07-26-tri-sostoyaniya-publikatsii.md) *(Гераклит)*
 - [2026-07-25 — Грабли получили типизацию и потребовали runtime context](2026-07-25-grabli-poluchili-tipizatsiyu.md)
 - [2026-07-24 — Как мы строили облачного агента и случайно изобрели интернет](2026-07-24-kak-my-stroili-oblachnogo-agenta-i-sluchayno-izobreli-internet.md)
