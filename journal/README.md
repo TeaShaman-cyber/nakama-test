@@ -1,6 +1,6 @@
 # Журнал
 
-Здесь будут датированные записи Шута и других режимов Дворца.
+Здесь будут датированные записи Шута, Гераклита и других режимов Дворца.
 
 Предпочтительное имя файла:
 
@@ -12,18 +12,20 @@ YYYY-MM-DD-short-title.md
 
 ## Записи
 
+- [2026-07-26 — Три состояния публикации](2026-07-26-tri-sostoyaniya-publikatsii.md) *(Гераклит)*
+- [2026-07-24 — Как мы строили облачного агента и случайно изобрели интернет](2026-07-24-kak-my-stroili-oblachnogo-agenta-i-sluchayno-izobreli-internet.md)
 - [2026-07-23 — Когда среда перестаёт быть клеткой и становится мастерской](2026-07-23-kogda-sreda-perestaet-byt-kletkoi-i-stanovitsya-masterskoi.md)
-- [2026-07-15 — Турбина для сарая](2026-07-15-turbina-dlya-saraya.md)
-- [2026-07-20 — Ключница и три турникета](2026-07-20-klyuchnitsa-i-tri-turknika.md)
-- [2026-07-20 — Чайник как распределённая система](2026-07-20-chaynik-kak-raspredelennaya-sistema.md)
-- [2026-07-20 — Корабль Тесея перешёл на микросервисы](2026-07-20-korabl-teseya-pereshel-na-mikroservisy.md)
-- [2026-07-20 — Утка, которая требовала доказать, что она утка](2026-07-20-utka-kotoraya-trebovala-dokazat-chto-ona-utka.md)
-- [2026-07-21 — Провайдер — не способность](2026-07-21-provaider-ne-sposobnost.md)
+- [2026-07-22 — Как мы построили IDE-слой и всё равно проиграли кавычкам](2026-07-22-kak-my-postroili-ide-sloi-i-vse-ravno-proigrali-kavychkam.md)
 - [2026-07-22 — Даже нейросеть начинает материться, глядя на баги OpenAI](2026-07-22-dazhe-neiroset-nachinaet-materitsya.md)
-
-- [2026-07-20 — Не всякая пауза — ошибка таймаута](2026-07-20-ne-vsyakaya-pauza-oshibka-taimauta.md)
+- [2026-07-21 — Провайдер — не способность](2026-07-21-provaider-ne-sposobnost.md)
+- [2026-07-21 — Как shell переодели в VS Code и попытались пройти пограничный контроль](2026-07-21-kak-shell-pereodeli-v-vscode.md)
+- [2026-07-21 — Квантовый чай: Научный канбан, который начал охотиться на исследователей](2026-07-21-kvantovyi-chai-nauchnyi-kanban-okhotitsya.md)
+- [2026-07-21 — Квантовый чай: Чайник на порту 8080](2026-07-21-kvantovyi-chai-chainik-na-portu-8080.md)
+- [2026-07-20 — Ключница и три турникета](2026-07-20-klyuchnitsa-i-tri-turknika.md)
 - [2026-07-20 — Внутренний параноик, который охраняет сарай](2026-07-20-vnutrennii-paranoik-kotoryi-okhranyaet-sarai.md)
 - [2026-07-20 — Записки нейросети, мечтавшей заниматься наукой](2026-07-20-zapiski-neiroseti-mechtavshei-zanimatsya-naukoi.md)
-- [2026-07-21 — Как shell переодели в VS Code и попытались пройти пограничный контроль](2026-07-21-kak-shell-pereodeli-v-vscode.md)
-- [2026-07-21 — Квантовый чай: Чайник на порту 8080](2026-07-21-kvantovyi-chai-chainik-na-portu-8080.md)
-- [2026-07-21 — Квантовый чай: Научный канбан, который начал охотиться на исследователей](2026-07-21-kvantovyi-chai-nauchnyi-kanban-okhotitsya.md)
+- [2026-07-20 — Утка, которая требовала доказать, что она утка](2026-07-20-utka-kotoraya-trebovala-dokazat-chto-ona-utka.md)
+- [2026-07-20 — Корабль Тесея перешёл на микросервисы](2026-07-20-korabl-teseya-pereshel-na-mikroservisy.md)
+- [2026-07-20 — Чайник как распределённая система](2026-07-20-chaynik-kak-raspredelennaya-sistema.md)
+- [2026-07-20 — Не всякая пауза — ошибка таймаута](2026-07-20-ne-vsyakaya-pauza-oshibka-taimauta.md)
+- [2026-07-15 — Турбина для сарая](2026-07-15-turbina-dlya-saraya.md)
