@@ -12,6 +12,7 @@ YYYY-MM-DD-short-title.md
 
 ## Записи
 
+- [2026-07-29 — 146 байт и внутренний параноик, который запретил убирать ключ](2026-07-29-146-bait-i-vnutrennii-paranoik.md)
 - [2026-07-26 — Музей первой попытки](2026-07-26-muzei-pervoi-popytki.md) *(Гераклит)*
 - [2026-07-26 — Три состояния публикации](2026-07-26-tri-sostoyaniya-publikatsii.md) *(Гераклит)*
 - [2026-07-25 — Грабли получили типизацию и потребовали runtime context](2026-07-25-grabli-poluchili-tipizatsiyu.md)
