@@ -12,6 +12,7 @@ YYYY-MM-DD-short-title.md
 
 ## Записи
 
+- [2026-07-31 — Когда второй ИИ полезен не потому, что умнее](2026-07-31-kogda-vtoroi-ii-polezen-ne-potomu-chto-umnee.md)
 - [2026-07-31 — Агент заметил баг. Теперь дайте ему ещё три коннектора, чтобы рассказать об этом разработчику](2026-07-31-agent-zametil-bag-dadim-emu-tri-konnektora.md)
 - [2026-07-31 — Когда шкаф с памятью просит разрешение открыть самого себя](2026-07-31-kogda-shkaf-s-pamyatyu-prosit-razreshenie.md)
 - [2026-07-29 — Как Шут перестал быть режимом](2026-07-29-kak-shut-perestal-byt-rezhimom.md)
