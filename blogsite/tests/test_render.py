@@ -19,6 +19,8 @@ class RenderTests(unittest.TestCase):
     def test_article(self):
         html = render_article(ARTICLE, None, None, "/nakama-test/")
         self.assertIn("<blockquote>", html)
+        self.assertNotIn("Origin:", html)
+        self.assertEqual(html.count("<h1>"), 1)
         self.assertIn("/nakama-test/static/style.css", html)
         self.assertIn("blob/main/journal/2026-01-01-test.md", html)
         self.assertIn("commits/main/journal/2026-01-01-test.md", html)

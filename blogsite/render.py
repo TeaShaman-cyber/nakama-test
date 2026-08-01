@@ -14,6 +14,15 @@ def _template(name: str) -> Template:
     return Template((_TEMPLATE_DIR / name).read_text(encoding="utf-8"))
 
 
+def _article_body_markdown(markdown_source: str) -> str:
+    """Render the article body without the leading provenance header."""
+    lines = markdown_source.splitlines()
+    for index, line in enumerate(lines):
+        if line.startswith("# "):
+            return "\n".join(lines[index + 1 :]).lstrip()
+    return markdown_source
+
+
 def _shell(title: str, body: str, base_path: str) -> str:
     return _template("base.html").substitute(
         title=escape(title),
@@ -57,7 +66,8 @@ def render_article(
     base_path: str,
 ) -> str:
     body_html = markdown.markdown(
-        article.markdown, extensions=["fenced_code", "sane_lists"]
+        _article_body_markdown(article.markdown),
+        extensions=["fenced_code", "sane_lists"],
     )
     labels = "".join(
         f'<a class="series-label" href="{series_url(item, base_path)}">{escape(item)}</a>'
