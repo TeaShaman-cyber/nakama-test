@@ -63,6 +63,12 @@
       "problemMatcher": []
     },
     {
+      "label": "Blog: navigation-audit",
+      "type": "shell",
+      "command": "node tools/blog_navigation_audit.mjs",
+      "problemMatcher": []
+    },
+    {
       "label": "Git: scan staged",
       "type": "shell",
       "command": "node tools/git_safety/scan_staged.mjs",
