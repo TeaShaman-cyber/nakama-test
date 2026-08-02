@@ -49,6 +49,12 @@
       "type": "shell",
       "command": "node tools/blog_audit.mjs",
       "problemMatcher": []
+    },
+    {
+      "label": "Blog: metadata-plan",
+      "type": "shell",
+      "command": "node tools/blog_metadata_plan.mjs",
+      "problemMatcher": []
     }
   ]
 }
