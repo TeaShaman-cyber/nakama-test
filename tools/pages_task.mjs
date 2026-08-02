@@ -39,6 +39,10 @@ function changedPaths(status) {
 }
 
 function assertPublishScope() {
+  const branch = output("git", ["branch", "--show-current"]);
+  if (branch !== "main") {
+    throw new Error(`Publish stopped: expected branch main, got ${branch || "detached HEAD"}.`);
+  }
   const status = gitStatus();
   if (!status) {
     throw new Error("No local journal changes to publish.");
