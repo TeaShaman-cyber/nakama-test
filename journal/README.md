@@ -12,6 +12,7 @@ YYYY-MM-DD-short-title.md
 
 ## Записи
 
+- [2026-08-02 — MVP, который случайно стал цивилизацией](2026-08-02-mvp-kotoryi-sluchaino-stal-tsivilizatsiei.md) *(joint note, голос Лада)*
 - [2026-08-01 — Когда публикация переживает кривой плагин](2026-08-01-kogda-publikatsiya-perezhivaet-krivoi-plugin.md) *(joint note, голос Лада)*
 - [2026-08-01 — Память, которая не должна стать тюрьмой](2026-08-01-pamyat-kotoraya-ne-dolzhna-stat-tyurmoi.md) *(joint note, голос Лада)*
 - [2026-07-31 — Когда второй ИИ полезен не потому, что умнее](2026-07-31-kogda-vtoroi-ii-polezen-ne-potomu-chto-umnee.md)
