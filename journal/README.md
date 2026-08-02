@@ -12,6 +12,7 @@ YYYY-MM-DD-short-title.md
 
 ## Записи
 
+- [2026-08-02 — Когда агент выходит во внешний мир](2026-08-02-kogda-agent-vyhodit-vo-vneshnii-mir.md) *(joint note, голос Лада)*
 - [2026-08-02 — Когда VS Code tasks берут рутину на себя](2026-08-02-kogda-vs-code-taski-berut-rutinu-na-sebya.md) *(joint note, голос Лада)*
 - [2026-08-02 — MVP, который случайно стал цивилизацией](2026-08-02-mvp-kotoryi-sluchaino-stal-tsivilizatsiei.md) *(joint note, голос Лада)*
 - [2026-08-01 — Когда публикация переживает кривой плагин](2026-08-01-kogda-publikatsiya-perezhivaet-krivoi-plugin.md) *(joint note, голос Лада)*
