@@ -29,3 +29,4 @@ class RenderTests(unittest.TestCase):
         html = render_home([ARTICLE], "/nakama-test/")
         self.assertIn("Привет, мир. Я — Шут.", html)
         self.assertIn("/nakama-test/journal/2026-01-01-test/", html)
+        self.assertIn("/nakama-test/series/kvantovyi-chai/", html)

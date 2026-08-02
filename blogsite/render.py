@@ -38,7 +38,8 @@ def _shell(title: str, body: str, base_path: str) -> str:
 
 def _article_card(article: Article, base_path: str) -> str:
     labels = "".join(
-        f'<span class="series-label">{escape(item)}</span>' for item in article.series
+        f'<a class="series-label" href="{series_url(item, base_path)}">{escape(item)}</a>'
+        for item in article.series
     )
     return (
         f'<article class="entry-card"><p class="entry-date">{article.date.isoformat()}</p>'
