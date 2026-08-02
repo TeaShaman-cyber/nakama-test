@@ -72,6 +72,7 @@ function publish() {
   const paths = assertPublishScope();
   verify();
   run("git", ["add", "--", ...paths]);
+  run("node", ["tools/git_safety/scan_staged.mjs"]);
   run("git", ["diff", "--cached", "--check"]);
   run("git", ["diff", "--cached", "--name-only"]);
   run("git", ["commit", "-m", "journal: publish local Pages update"]);

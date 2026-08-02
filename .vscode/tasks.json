@@ -55,6 +55,12 @@
       "type": "shell",
       "command": "node tools/blog_metadata_plan.mjs",
       "problemMatcher": []
+    },
+    {
+      "label": "Git: scan staged",
+      "type": "shell",
+      "command": "node tools/git_safety/scan_staged.mjs",
+      "problemMatcher": []
     }
   ]
 }
