@@ -43,6 +43,12 @@
       "type": "shell",
       "command": "node tools/pages_task.mjs status",
       "problemMatcher": []
+    },
+    {
+      "label": "Blog: audit",
+      "type": "shell",
+      "command": "node tools/blog_audit.mjs",
+      "problemMatcher": []
     }
   ]
 }
