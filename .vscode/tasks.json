@@ -57,6 +57,12 @@
       "problemMatcher": []
     },
     {
+      "label": "Blog: metadata-apply",
+      "type": "shell",
+      "command": "node tools/blog_metadata_apply.mjs",
+      "problemMatcher": []
+    },
+    {
       "label": "Git: scan staged",
       "type": "shell",
       "command": "node tools/git_safety/scan_staged.mjs",
