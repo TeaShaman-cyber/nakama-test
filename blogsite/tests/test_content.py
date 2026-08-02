@@ -26,6 +26,12 @@ class ContentTests(unittest.TestCase):
         self.assertEqual(
             extract_excerpt("# Заголовок\n\nПервый абзац.\n\nВторой."), "Первый абзац."
         )
+        self.assertEqual(
+            extract_excerpt(
+                "Origin: dialogue\nMode: joint note\n\n# Заголовок\n\nПервый абзац."
+            ),
+            "Первый абзац.",
+        )
 
     def test_about_page_reads_title(self):
         page = load_about_page(FIXTURES / "about" / "continuity.md")

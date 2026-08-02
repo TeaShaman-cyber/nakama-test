@@ -30,9 +30,15 @@ def _metadata(text: str) -> dict[str, str]:
 
 def extract_excerpt(text: str) -> str:
     in_fence = False
+    after_title = False
     paragraph: list[str] = []
     for raw in text.splitlines():
         line = raw.strip()
+        if line.startswith("# "):
+            after_title = True
+            continue
+        if not after_title:
+            continue
         if line.startswith("```"):
             in_fence = not in_fence
             continue
