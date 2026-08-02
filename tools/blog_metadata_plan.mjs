@@ -1,4 +1,7 @@
 import { spawnSync } from "node:child_process";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
+import process from "node:process";
 
 const jsonOutput = process.argv.includes("--json");
 const auditProcess = spawnSync(process.execPath, ["tools/blog_audit.mjs", "--json"], {
@@ -11,6 +14,9 @@ if (auditProcess.status !== 0) {
 }
 
 const audit = JSON.parse(auditProcess.stdout);
+const overrides = JSON.parse(
+  readFileSync(join(process.cwd(), "docs/plans/blog_metadata_overrides.json"), "utf8"),
+);
 
 const series = {
   "Семейный архив": {
@@ -136,6 +142,18 @@ function planArticle(article) {
 }
 
 const articles = audit.articles.filter((article) => article.series.length === 0);
+const plannedArticles = articles.map((article) => {
+  const draft = planArticle(article);
+  const override = overrides[article.file];
+  return override
+    ? {
+        ...draft,
+        ...override,
+        rationale: "Reviewed by the editorial collegium; no article files changed.",
+      }
+    : draft;
+});
+
 const plan = {
   generated_at: new Date().toISOString(),
   read_only: true,
@@ -146,7 +164,8 @@ const plan = {
     missing_series: articles.length,
   },
   series,
-  articles: articles.map(planArticle),
+  reviewed_overrides: Object.keys(overrides).length,
+  articles: plannedArticles,
 };
 
 if (jsonOutput) {

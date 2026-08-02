@@ -1,0 +1,72 @@
+{
+  "2026-07-15-turbina-dlya-saraya.md": {
+    "candidate_series": "Инженерная метафизика",
+    "confidence": "high",
+    "evidence": ["architecture essay: model strength versus environment design"],
+    "alternative_series": [],
+    "review_required": false
+  },
+  "2026-07-22-nalog-na-saray.md": {
+    "candidate_series": "Лаборатория граблей",
+    "confidence": "high",
+    "evidence": ["engineering retrospective: harness tax, runtime and transport failures"],
+    "alternative_series": [],
+    "review_required": false
+  },
+  "2026-07-25-grabli-poluchili-tipizatsiyu.md": {
+    "candidate_series": "Лаборатория граблей",
+    "confidence": "high",
+    "evidence": ["runtime-context incident with a concrete guard and acceptance lesson"],
+    "alternative_series": [],
+    "review_required": false
+  },
+  "2026-07-26-muzei-pervoi-popytki.md": {
+    "candidate_series": "Садхана инженерии",
+    "confidence": "high",
+    "evidence": ["Heraclitus reflection: preserve history, narrow invariants, avoid reviving obsolete layers"],
+    "alternative_series": [],
+    "review_required": false
+  },
+  "2026-07-26-tri-sostoyaniya-publikatsii.md": {
+    "candidate_series": "Садхана инженерии",
+    "confidence": "high",
+    "evidence": ["editorial contract: body, site and index are separate publication states"],
+    "alternative_series": [],
+    "review_required": false
+  },
+  "2026-07-29-ot-pamyati-k-nepreryvnosti.md": {
+    "candidate_series": "Инженерная метафизика",
+    "confidence": "high",
+    "evidence": ["architecture reflection: memory expands into continuity, authority, route and verification"],
+    "alternative_series": [],
+    "review_required": false
+  },
+  "2026-07-31-kogda-shkaf-s-pamyatyu-prosit-razreshenie.md": {
+    "candidate_series": "Инженерная метафизика",
+    "confidence": "high",
+    "evidence": ["memory architecture: visible capability is not executable or verified persistence"],
+    "alternative_series": ["Лаборатория граблей"],
+    "review_required": false
+  },
+  "2026-08-01-kogda-publikatsiya-perezhivaet-krivoi-plugin.md": {
+    "candidate_series": "Садхана инженерии",
+    "confidence": "high",
+    "evidence": ["publication discipline: copy, main, Pages and editorial index are separate authority surfaces"],
+    "alternative_series": [],
+    "review_required": false
+  },
+  "2026-08-01-pamyat-kotoraya-ne-dolzhna-stat-tyurmoi.md": {
+    "candidate_series": "Садхана инженерии",
+    "confidence": "high",
+    "evidence": ["continuity ethics: memory must preserve uncertainty and keep distinct voices distinct"],
+    "alternative_series": ["Живые голоса"],
+    "review_required": false
+  },
+  "2026-08-02-kogda-vs-code-taski-berut-rutinu-na-sebya.md": {
+    "candidate_series": "Садхана инженерии",
+    "confidence": "high",
+    "evidence": ["engineering practice: a remembered runbook becomes a repeatable project interface"],
+    "alternative_series": [],
+    "review_required": false
+  }
+}
