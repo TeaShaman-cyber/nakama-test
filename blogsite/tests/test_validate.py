@@ -1,6 +1,7 @@
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import patch
 
 from blogsite.validate import (
     assert_canonical_unchanged,
@@ -16,10 +17,26 @@ class ValidateTests(unittest.TestCase):
             root = Path(tmp)
             journal = root / "journal"
             journal.mkdir()
-            (journal / "2026-01-01-a.md").write_text("# A\n", encoding="utf-8")
-            (journal / "2026-01-01-a.MD").write_text("# B\n", encoding="utf-8")
-            with self.assertRaises(ValueError):
-                validate_source_slugs(journal)
+
+            class Entry:
+                def __init__(self, suffix):
+                    self.name = f"2026-01-01-a{suffix}"
+                    self.stem = "2026-01-01-a"
+                    self.suffix = suffix
+
+                def __lt__(self, other):
+                    return self.name < other.name
+
+                def is_file(self):
+                    return True
+
+            entries = [
+                Entry(".md"),
+                Entry(".MD"),
+            ]
+            with patch.object(Path, "iterdir", return_value=entries):
+                with self.assertRaises(ValueError):
+                    validate_source_slugs(journal)
 
     def test_broken_internal_link_fails(self):
         with tempfile.TemporaryDirectory() as tmp:

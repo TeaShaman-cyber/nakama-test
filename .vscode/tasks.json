@@ -4,32 +4,44 @@
     {
       "label": "Pages: test",
       "type": "shell",
-      "command": "${workspaceFolder}/.venv/bin/python -m unittest discover -s blogsite/tests -v",
+      "command": "python -m unittest discover -s blogsite/tests -v",
       "group": {"kind": "test", "isDefault": true},
       "problemMatcher": []
     },
     {
       "label": "Pages: lint",
       "type": "shell",
-      "command": "${workspaceFolder}/.venv/bin/ruff check blogsite",
+      "command": "ruff check blogsite",
       "problemMatcher": ["$ruff"]
     },
     {
       "label": "Pages: format-check",
       "type": "shell",
-      "command": "${workspaceFolder}/.venv/bin/ruff format --check blogsite",
+      "command": "ruff format --check blogsite",
       "problemMatcher": []
     },
     {
       "label": "Pages: build",
       "type": "shell",
-      "command": "${workspaceFolder}/.venv/bin/python -m blogsite.build --base-path /nakama-test/",
+      "command": "python -m blogsite.build --repo-root . --output public --base-path /nakama-test/",
       "problemMatcher": []
     },
     {
       "label": "Pages: verify",
-      "dependsOrder": "sequence",
-      "dependsOn": ["Pages: lint", "Pages: format-check", "Pages: test", "Pages: build"],
+      "type": "shell",
+      "command": "node tools/pages_task.mjs verify",
+      "problemMatcher": []
+    },
+    {
+      "label": "Pages: publish",
+      "type": "shell",
+      "command": "node tools/pages_task.mjs publish",
+      "problemMatcher": []
+    },
+    {
+      "label": "Pages: status",
+      "type": "shell",
+      "command": "node tools/pages_task.mjs status",
       "problemMatcher": []
     }
   ]
