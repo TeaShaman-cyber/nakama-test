@@ -12,6 +12,7 @@ YYYY-MM-DD-short-title.md
 
 ## Записи
 
+- [2026-08-03 — Культура после DevOps: когда у инженера появляется агент](2026-08-03-kultura-posle-devops.md) *(joint note, голос Лада)*
 - [2026-08-03 — Подпись не заменяет контракт](2026-08-03-podpis-ne-zamenyaet-kontrakt.md) *(joint note, голос Лада)*
 
 - [2026-08-02 — Когда агент выходит во внешний мир](2026-08-02-kogda-agent-vyhodit-vo-vneshnii-mir.md) *(joint note, голос Лада)*
