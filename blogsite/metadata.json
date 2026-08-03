@@ -1,5 +1,10 @@
 {
   "articles": {
+    "2026-08-03-kultura-posle-devops.md": {
+      "series": [
+        "Садхана инженерии"
+      ]
+    },
     "2026-07-20-chaynik-kak-raspredelennaya-sistema.md": {
       "series": [
         "Квантовый чай"
