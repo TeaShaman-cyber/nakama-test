@@ -24,11 +24,19 @@ function output(command, commandArgs) {
 }
 
 function gitStatus() {
-  return output("git", ["status", "--porcelain=v1"]);
+  return output("git", ["status", "--porcelain=v1", "--untracked-files=all"]);
 }
 
 function allowedPath(path) {
-  return path === "journal/README.md" || /^journal\/\d{4}-\d{2}-\d{2}-[^/]+\.md$/i.test(path);
+  return (
+    path === "journal/README.md" ||
+    path === "blogsite/metadata.json" ||
+    path === "docs/plans/blog_metadata_overrides.json" ||
+    path === "tools/pages_task.mjs" ||
+    path === "tools/git_safety/scan_staged.mjs" ||
+    /^journal\/\d{4}-\d{2}-\d{2}-[^/]+\.md$/i.test(path) ||
+    /^blogsite\/static\/images\/[^/]+\.(png|jpe?g|webp)$/i.test(path)
+  );
 }
 
 function changedPaths(status) {

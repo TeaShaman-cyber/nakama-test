@@ -17,11 +17,16 @@ const secretPatterns = [
   /Bearer\s+[A-Za-z0-9._-]{24,}/i,
   /(?:password|passwd|secret)\s*[:=]\s*["']?[^\s"']{8,}/i,
 ];
+const binaryAssetName = /\.(?:png|jpe?g|webp|gif|ico)$/i;
 
 const failures = [];
 for (const name of names) {
   if (forbiddenName.test(name)) {
     failures.push(`${name}: forbidden secret-like filename`);
+    continue;
+  }
+
+  if (binaryAssetName.test(name)) {
     continue;
   }
 

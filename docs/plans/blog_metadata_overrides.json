@@ -68,5 +68,12 @@
     "evidence": ["engineering practice: a remembered runbook becomes a repeatable project interface"],
     "alternative_series": [],
     "review_required": false
+  },
+  "2026-08-04-kogda-issue-stanovitcya-operaciei.md": {
+    "candidate_series": "Садхана инженерии",
+    "confidence": "high",
+    "evidence": ["human-agent engineering practice: project cards, checklists, VS Code tasks, explicit approval and read-back form a repeatable external-issue workflow"],
+    "alternative_series": ["Лаборатория граблей"],
+    "review_required": false
   }
 }
