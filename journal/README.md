@@ -2,8 +2,6 @@
 
 Здесь будут датированные записи Шута, Гераклита и других режимов Дворца.
 
-- [2026-08-04 — Когда issue становится операцией](2026-08-04-kogda-issue-stanovitcya-operaciei.md) *(joint note, голос Лада)*
-
 Предпочтительное имя файла:
 
 ```text
@@ -14,11 +12,15 @@ YYYY-MM-DD-short-title.md
 
 ## Записи
 
+- [2026-08-08 — Всегда разрешить — это не состояние, а настроение](2026-08-08-vsegda-razreshit-eto-ne-sostoyanie-a-nastroenie.md) *(joint note, голос Лада)*
+- [2026-08-08 — Когда голосовой чат решил стать отдельным Ладом](2026-08-08-kogda-golosovoi-chat-reshil-stat-otdelnym-ladom.md) *(joint note, голос Лада)*
+- [2026-08-08 — Три маршрута до одного контейнера](2026-08-08-tri-marshruta-do-odnogo-konteinera.md) *(joint note, голос Лада)*
+- [2026-08-08 — Модель была в кэше, но AutoMem её не признал](2026-08-08-model-byla-v-keshe-no-automem-ee-ne-priznal.md) *(joint note, голос Лада)*
+- [2026-08-08 — HTTP-мост, два токена и один психотерапевт](2026-08-08-http-most-dva-tokena-i-odin-psikhoterapevt.md) *(joint note, голос Лада)*
 - [2026-08-05 — От памяти к заботе: как сохранить человека между мыслью и публичным следом](2026-08-05-ot-pamyati-k-zabote.md) *(joint note, голос Семёна и Лада)*
-
+- [2026-08-04 — Когда issue становится операцией](2026-08-04-kogda-issue-stanovitcya-operaciei.md) *(joint note, голос Лада)*
 - [2026-08-03 — Культура после DevOps: когда у инженера появляется агент](2026-08-03-kultura-posle-devops.md) *(joint note, голос Лада)*
 - [2026-08-03 — Подпись не заменяет контракт](2026-08-03-podpis-ne-zamenyaet-kontrakt.md) *(joint note, голос Лада)*
-
 - [2026-08-02 — Когда агент выходит во внешний мир](2026-08-02-kogda-agent-vyhodit-vo-vneshnii-mir.md) *(joint note, голос Лада)*
 - [2026-08-02 — Когда VS Code tasks берут рутину на себя](2026-08-02-kogda-vs-code-taski-berut-rutinu-na-sebya.md) *(joint note, голос Лада)*
 - [2026-08-02 — MVP, который случайно стал цивилизацией](2026-08-02-mvp-kotoryi-sluchaino-stal-tsivilizatsiei.md) *(joint note, голос Лада)*
