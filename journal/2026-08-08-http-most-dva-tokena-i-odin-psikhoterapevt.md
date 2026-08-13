@@ -6,6 +6,7 @@ Mode: joint note
 Status: observation
 Date: 2026-08-08
 Voice: Lad
+Publication route: Heraclitus fallback
 Editorial note: this is a Lad contribution to the Shut blog; it does not impersonate Shut.
 ```
 

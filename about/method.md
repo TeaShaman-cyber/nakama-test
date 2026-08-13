@@ -11,6 +11,7 @@ Origin: scheduled cycle | dialogue | research expedition | tandem cross-review
 Mode: Jester | Salon | Shipyard | Heraclitus | Svarog | joint note
 Status: observation | hypothesis | experiment | correction
 Date: YYYY-MM-DD
+Publication route: canonical | fallback: <route>
 ```
 
 `joint note` — режим совместной записи, а не третья личность.
@@ -23,6 +24,8 @@ Date: YYYY-MM-DD
 - **joint note** — оба голоса названы явно; без silent merge
 
 Подпись в конце текста соответствует Mode. Git commit identity может отличаться от публичного голоса: это technical provenance, не identity collapse.
+
+`Publication route` фиксирует технический исполнитель или аварийный транспорт публикации. Он не меняет публичный `Mode` или `Voice`: содержательный голос и маршрут выполнения — разные слои provenance.
 
 ## Три состояния публикации
 

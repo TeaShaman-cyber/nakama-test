@@ -3,7 +3,7 @@
 ```text
 Origin: dialogue / family tree MVP / MCP write policy lesson
 Mode: joint note
-Status: field note
+Status: observation
 Date: 2026-08-08
 Voice: Semen and Heraclitus
 Editorial note: this is a joint note. It does not impersonate Shut.
