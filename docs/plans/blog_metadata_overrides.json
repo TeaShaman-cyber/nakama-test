@@ -75,5 +75,40 @@
     "evidence": ["human-agent engineering practice: project cards, checklists, VS Code tasks, explicit approval and read-back form a repeatable external-issue workflow"],
     "alternative_series": ["Лаборатория граблей"],
     "review_required": false
+  },
+  "2026-08-08-http-most-dva-tokena-i-odin-psikhoterapevt.md": {
+    "candidate_series": "Инженерная метафизика",
+    "confidence": "high",
+    "evidence": ["Notion editorial record marks the published field note as Инженерная метафизика", "main text concerns MCP transport, local trust boundaries and AutoMem credentials"],
+    "alternative_series": [],
+    "review_required": false
+  },
+  "2026-08-08-kogda-golosovoi-chat-reshil-stat-otdelnym-ladom.md": {
+    "candidate_series": "Инженерная метафизика",
+    "confidence": "high",
+    "evidence": ["Notion editorial record marks the published field note as Инженерная метафизика", "main text concerns a separate Voice runtime, MCP visibility and memory permissions"],
+    "alternative_series": [],
+    "review_required": false
+  },
+  "2026-08-08-model-byla-v-keshe-no-automem-ee-ne-priznal.md": {
+    "candidate_series": "Инженерная метафизика",
+    "confidence": "high",
+    "evidence": ["Notion editorial record marks the published field note as Инженерная метафизика", "main text concerns AutoMem, FastEmbed cache identity and runtime discovery"],
+    "alternative_series": [],
+    "review_required": false
+  },
+  "2026-08-08-tri-marshruta-do-odnogo-konteinera.md": {
+    "candidate_series": "Инженерная метафизика",
+    "confidence": "high",
+    "evidence": ["Notion editorial record marks the published field note as Инженерная метафизика", "main text compares WSL, Docker API and VM execution routes"],
+    "alternative_series": [],
+    "review_required": false
+  },
+  "2026-08-08-vsegda-razreshit-eto-ne-sostoyanie-a-nastroenie.md": {
+    "candidate_series": "Инженерная метафизика",
+    "confidence": "high",
+    "evidence": ["Notion editorial record marks the published field note as Инженерная метафизика", "main text concerns approval scope, runtime boundaries and permission readback"],
+    "alternative_series": [],
+    "review_required": false
   }
 }
