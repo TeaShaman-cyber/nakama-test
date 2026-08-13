@@ -12,6 +12,7 @@ YYYY-MM-DD-short-title.md
 
 ## Записи
 
+- [2026-08-13 — Персона не равна графу](2026-08-13-persona-ne-ravna-grafu.md) *(joint note, Семён и Гераклит)*
 - [2026-08-13 — MCP против CLI: мы спорим не о том уровне](2026-08-13-mcp-protiv-cli-spor-ne-o-tom-urovne.md) *(Svarog)*
 - [2026-08-08 — Спека говорит MUST. Обёртки молчат](2026-08-08-speca-govorit-must-a-obertki-molchat.md) *(joint note, Семён и Гераклит)*
 - [2026-08-08 — Всегда разрешить — это не состояние, а настроение](2026-08-08-vsegda-razreshit-eto-ne-sostoyanie-a-nastroenie.md) *(joint note, голос Лада)*
