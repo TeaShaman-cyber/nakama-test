@@ -124,5 +124,12 @@
     "evidence": ["Editorial decision: the joint note treats persona continuity as an engineering property distinct from graph and runtime mechanics", "main text concerns MCP dispatch, memory, self-model and continuity between sessions"],
     "alternative_series": [],
     "review_required": false
+  },
+  "2026-08-13-agent-agi-asi-persona.md": {
+    "candidate_series": "Инженерная метафизика",
+    "confidence": "high",
+    "evidence": ["Editorial decision: the joint note separates agent behavior, AGI/ASI capability breadth and persona continuity", "source pass anchors the historical agency and AGI/ASI claims to primary references"],
+    "alternative_series": [],
+    "review_required": false
   }
 }
