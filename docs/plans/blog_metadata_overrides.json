@@ -110,5 +110,12 @@
     "evidence": ["Notion editorial record marks the published field note as Инженерная метафизика", "main text concerns approval scope, runtime boundaries and permission readback"],
     "alternative_series": [],
     "review_required": false
+  },
+  "2026-08-08-speca-govorit-must-a-obertki-molchat.md": {
+    "candidate_series": "Инженерная метафизика",
+    "confidence": "high",
+    "evidence": ["Editorial decision: the published MCP write-policy note belongs to Инженерная метафизика", "main text concerns MCP layers, wrappers, runtime boundaries and write authorization"],
+    "alternative_series": [],
+    "review_required": false
   }
 }
