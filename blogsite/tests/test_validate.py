@@ -1,6 +1,6 @@
-from pathlib import Path
 import tempfile
 import unittest
+from pathlib import Path
 from unittest.mock import patch
 
 from blogsite.validate import (
@@ -34,9 +34,11 @@ class ValidateTests(unittest.TestCase):
                 Entry(".md"),
                 Entry(".MD"),
             ]
-            with patch.object(Path, "iterdir", return_value=entries):
-                with self.assertRaises(ValueError):
-                    validate_source_slugs(journal)
+            with (
+                patch.object(Path, "iterdir", return_value=entries),
+                self.assertRaises(ValueError),
+            ):
+                validate_source_slugs(journal)
 
     def test_broken_internal_link_fails(self):
         with tempfile.TemporaryDirectory() as tmp:

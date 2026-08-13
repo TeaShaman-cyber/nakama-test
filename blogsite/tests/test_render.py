@@ -1,5 +1,5 @@
-from datetime import date
 import unittest
+from datetime import date
 
 from blogsite.model import Article
 from blogsite.render import render_article, render_home

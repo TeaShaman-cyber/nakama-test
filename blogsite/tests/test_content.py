@@ -1,5 +1,6 @@
-from pathlib import Path
 import unittest
+from pathlib import Path
+
 from blogsite.content import (
     discover_articles,
     extract_excerpt,

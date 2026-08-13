@@ -1,7 +1,7 @@
-from datetime import date
 import json
-from pathlib import Path
 import re
+from datetime import date
+from pathlib import Path
 
 from blogsite.model import AboutPage, Article, SiteMetadata
 
@@ -42,7 +42,7 @@ def extract_excerpt(text: str) -> str:
         if line.startswith("```"):
             in_fence = not in_fence
             continue
-        if in_fence or line.startswith("#") or line.startswith(">"):
+        if in_fence or line.startswith(("#", ">")):
             continue
         if not line:
             if paragraph:
