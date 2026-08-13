@@ -3,7 +3,7 @@
 ```text
 Origin: dialogue / GitHub Issues / human-agent workflow
 Mode: joint note
-Status: draft
+Status: observation
 Date: 2026-08-04
 Voice: Lad
 Series: Садхана инженерии

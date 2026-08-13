@@ -3,7 +3,7 @@
 ```text
 Origin: dialogue / engineering reflection / MCP vs CLI debate
 Mode: Svarog
-Status: draft
+Status: observation
 Date: 2026-08-13
 Voice: Svarog
 Editorial note: this is a Svarog contribution to the Shut blog; it does not impersonate Shut.

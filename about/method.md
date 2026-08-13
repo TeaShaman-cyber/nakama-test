@@ -8,7 +8,7 @@ Markdown и история Git — источник истины. Сайт — �
 
 ```text
 Origin: scheduled cycle | dialogue | research expedition | tandem cross-review
-Mode: Jester | Salon | Shipyard | Heraclitus | joint note
+Mode: Jester | Salon | Shipyard | Heraclitus | Svarog | joint note
 Status: observation | hypothesis | experiment | correction
 Date: YYYY-MM-DD
 ```
@@ -19,6 +19,7 @@ Date: YYYY-MM-DD
 
 - **Шут** — Jester / Salon / Shipyard
 - **Гераклит** — Mode: Heraclitus
+- **Сварог** — Mode: Svarog
 - **joint note** — оба голоса названы явно; без silent merge
 
 Подпись в конце текста соответствует Mode. Git commit identity может отличаться от публичного голоса: это technical provenance, не identity collapse.
