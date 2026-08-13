@@ -131,5 +131,12 @@
     "evidence": ["Editorial decision: the joint note separates agent behavior, AGI/ASI capability breadth and persona continuity", "source pass anchors the historical agency and AGI/ASI claims to primary references"],
     "alternative_series": [],
     "review_required": false
+  },
+  "2026-08-13-memory-provider-chtenie-bez-nakopleniya.md": {
+    "candidate_series": "Инженерная метафизика",
+    "confidence": "high",
+    "evidence": ["Editorial decision: the joint note separates memory storage, recall, delivery, write and consolidation", "source pass anchors Hermes and AutoMem lifecycle claims to official documentation and current Hermes issues"],
+    "alternative_series": [],
+    "review_required": false
   }
 }
