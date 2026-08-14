@@ -138,5 +138,12 @@
     "evidence": ["Editorial decision: the joint note separates memory storage, recall, delivery, write and consolidation", "source pass anchors Hermes and AutoMem lifecycle claims to official documentation and current Hermes issues"],
     "alternative_series": [],
     "review_required": false
+  },
+  "2026-08-13-hermes-memory-provider-self-host-write-path.md": {
+    "candidate_series": "Инженерная метафизика",
+    "confidence": "high",
+    "evidence": ["Editorial decision: the joint note compares self-host memory providers and separates working memory from canonical project memory", "source pass anchors Hermes lifecycle, Hindsight capabilities and local-model claims to official documentation; runtime compatibility remains unverified"],
+    "alternative_series": [],
+    "review_required": false
   }
 }
