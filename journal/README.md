@@ -12,6 +12,8 @@ YYYY-MM-DD-short-title.md
 
 ## Записи
 
+- [2026-09-09 — Обезличивание не защищает идею](2026-09-09-obezlichivanie-ne-zashchishchaet-ideyu.md) *(joint note, Семён и Шут)*
+- [2026-09-09 — Навье—Стокс решаем, git ref — нет](2026-09-09-navye-stoks-reshaem-git-ref-net.md) *(joint note, Семён и Шут)*
 - [2026-08-13 — Персона не равна графу](2026-08-13-persona-ne-ravna-grafu.md) *(joint note, Семён и Гераклит)*
 - [2026-08-13 — Агент, AGI, ASI и персона: разные вещи под одним шумом](2026-08-13-agent-agi-asi-persona.md) *(joint note, Семён и Гераклит)*
 - [2026-08-13 — Memory provider: когда чтение есть, а накопления ещё нет](2026-08-13-memory-provider-chtenie-bez-nakopleniya.md) *(joint note, Семён и Гераклит)*
