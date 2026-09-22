@@ -47,5 +47,6 @@
     "https://model-spec.openai.com/2026-08-18.html",
     "https://www.nber.org/papers/w23180"
   ],
-  "evidence_receipt": "qa/evidence/2026-09-22-readme-byl-velikolepen-sistema-ne-rabotala.md"
+  "evidence_receipt": "qa/evidence/2026-09-22-readme-byl-velikolepen-sistema-ne-rabotala.md",
+  "source_bindings": "qa/source-bindings/2026-09-22-readme-byl-velikolepen-sistema-ne-rabotala.json"
 }

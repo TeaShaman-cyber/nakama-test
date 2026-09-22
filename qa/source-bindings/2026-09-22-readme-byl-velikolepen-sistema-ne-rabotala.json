@@ -1,0 +1,31 @@
+{
+  "schema": "nakama.article-source-bindings.v1",
+  "article": "journal/2026-09-22-readme-byl-velikolepen-sistema-ne-rabotala.md",
+  "bindings": [
+    {
+      "id": "openai-interpretability",
+      "label": "OpenAI в interpretability research",
+      "url": "https://openai.com/index/understanding-neural-networks-through-sparse-circuits/"
+    },
+    {
+      "id": "anthropic-interpretability",
+      "label": "Anthropic",
+      "url": "https://www.anthropic.com/research/tracing-thoughts-language-model"
+    },
+    {
+      "id": "model-spec-policy-layer",
+      "label": "Model Spec от 18 августа 2026",
+      "url": "https://model-spec.openai.com/2026-08-18.html"
+    },
+    {
+      "id": "astra-primary-report",
+      "label": "OpenAI опубликовала",
+      "url": "https://alignment.openai.com/misalignment-reports/self-generated-prompt-injections-in-compaction-summaries/"
+    },
+    {
+      "id": "selective-labels-methodology",
+      "label": "NBER w23180",
+      "url": "https://www.nber.org/papers/w23180"
+    }
+  ]
+}

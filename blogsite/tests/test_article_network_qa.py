@@ -1,6 +1,11 @@
 import unittest
 
-from tools.article_network_qa import graph_edges, parse_wolfram_result, wolfram_code
+from tools.article_network_qa import (
+    external_provider_degraded,
+    graph_edges,
+    parse_wolfram_result,
+    wolfram_code,
+)
 
 
 class ArticleNetworkQaTests(unittest.TestCase):
@@ -29,3 +34,16 @@ class ArticleNetworkQaTests(unittest.TestCase):
         self.assertIn("GraphDistance", code)
         self.assertNotIn("URLRead", code)
         self.assertNotIn("Import[", code)
+
+    def test_exa_rate_limit_is_degraded_not_no_signal(self):
+        payload = {
+            "_meta": {"ai.exa/rateLimited": True},
+            "content": [
+                {"type": "text", "text": "You've hit Exa's free MCP rate limit."}
+            ],
+        }
+        self.assertTrue(external_provider_degraded(payload))
+
+    def test_normal_search_payload_is_not_degraded(self):
+        payload = {"content": [{"type": "text", "text": "search results"}]}
+        self.assertFalse(external_provider_degraded(payload))

@@ -104,6 +104,37 @@ def source_hosts(article: str) -> set[str]:
     return hosts
 
 
+def verify_source_bindings(article: str, article_rel: str, binding_path: Path) -> int:
+    contract = load_manifest(binding_path)
+    if contract.get("schema") != "nakama.article-source-bindings.v1":
+        fail(f"unsupported source-binding schema: {binding_path.relative_to(ROOT)}")
+    if contract.get("article") != article_rel:
+        fail(
+            f"source-binding contract targets another article: {binding_path.relative_to(ROOT)}"
+        )
+    bindings = contract.get("bindings")
+    if not isinstance(bindings, list) or not bindings:
+        fail(
+            f"source-binding contract has no bindings: {binding_path.relative_to(ROOT)}"
+        )
+    seen_ids: set[str] = set()
+    for binding in bindings:
+        binding_id = binding.get("id")
+        label = binding.get("label")
+        url = binding.get("url")
+        if not all(
+            isinstance(value, str) and value for value in (binding_id, label, url)
+        ):
+            fail(f"invalid source binding in {binding_path.relative_to(ROOT)}")
+        if binding_id in seen_ids:
+            fail(f"duplicate source-binding id: {binding_id}")
+        seen_ids.add(binding_id)
+        expected = f"[{label}]({url})"
+        if expected not in article:
+            fail(f"source binding mismatch: {binding_id} expected {expected}")
+    return len(bindings)
+
+
 def verify_manifest(path: Path) -> None:
     manifest = load_manifest(path)
     article_path = ROOT / manifest["article"]
@@ -144,6 +175,16 @@ def verify_manifest(path: Path) -> None:
         if expected not in article:
             fail(f"{article_path.name}: missing source URL: {expected}")
 
+    source_binding_count = 0
+    source_bindings_rel = manifest.get("source_bindings")
+    if source_bindings_rel is not None:
+        source_bindings_path = ROOT / source_bindings_rel
+        if not source_bindings_path.is_file():
+            fail(f"missing source-binding contract: {source_bindings_rel}")
+        source_binding_count = verify_source_bindings(
+            article, manifest["article"], source_bindings_path
+        )
+
     blocks = MERMAID_BLOCK.findall(article)
     if len(blocks) != 1:
         fail(f"{article_path.name}: expected exactly one Mermaid argument graph")
@@ -170,6 +211,7 @@ def verify_manifest(path: Path) -> None:
         f"nodes={len(nodes)}",
         f"edges={sum(len(v) for v in adjacency.values())}",
         f"sources={len(hosts)}",
+        f"bindings={source_binding_count}",
     )
 
 
