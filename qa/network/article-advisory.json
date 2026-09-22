@@ -70,5 +70,11 @@
         "github-mcp-server"
       ]
     }
+  ],
+  "formal_mutations": [
+    {
+      "mutation_id": "cut-astra-argument-edge",
+      "mutation_manifest": "qa/mutation/2026-09-22-readme-baseline.json"
+    }
   ]
 }
