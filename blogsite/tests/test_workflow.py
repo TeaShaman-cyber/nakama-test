@@ -62,3 +62,18 @@ class WorkflowTests(unittest.TestCase):
         self.assertIn("https://mcp.exa.ai/mcp", config)
         self.assertIn("https://search.parallel.ai/mcp", config)
         self.assertIn("raw.githubusercontent.com/github/docs/main", manifest)
+
+    def test_article_mutation_reuses_current_cookbook_runner(self):
+        path = Path(".github/workflows/article-mutation.yml")
+        self.assertTrue(path.exists(), "missing article mutation workflow")
+        text = path.read_text(encoding="utf-8")
+        required = [
+            "permissions:\n  contents: read",
+            "reusable-mutation-test.yml@db03f5b1234f8a12244a0f513ed84dd976eb4051",
+            "requirements/ci-article-mutation.txt",
+            "tools/ci/article-mutation-test",
+        ]
+        for fragment in required:
+            self.assertIn(fragment, text)
+        self.assertNotIn("secrets.", text)
+        self.assertNotIn("contents: write", text)

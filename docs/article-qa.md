@@ -179,3 +179,66 @@ feature branch
 
 without silently turning that merge into publication authority. Promotion from
 `draft` or `ready` to `published` is a separate explicit content change.
+
+## Mutation QA
+
+Evidence-heavy articles also have a separate mutation lane. Its purpose is not
+to prove the article true; it tests whether declared QA contracts notice
+intentional defects.
+
+The first baseline is:
+
+```text
+qa/mutation/2026-09-22-readme-baseline.json
+```
+
+It is executed by:
+
+```text
+tools/ci/article-mutation-test
+```
+
+through the same reusable mutation runner already used by the 1F916 client:
+
+```text
+marcopolo-cookbook/.github/workflows/reusable-mutation-test.yml
+```
+
+The article endpoint is caller-owned and does not use `mutmut`. Each mutant is
+created in a temporary copy of the article/QA fixture and the existing
+`article_qa.py` contract is executed against that copy.
+
+The initial measured baseline is intentionally mixed:
+
+```text
+5 structural/source/provenance mutants -> KILLED_DETERMINISTIC
+1 semantic-strengthening mutant         -> SURVIVED
+```
+
+The survivor changes the claim from weak evidence about absence of subjectivity
+to proof of absence while preserving the syntactic markers, graph and source
+anchors. Its survival is evidence that current deterministic QA does not test
+claim strength. It is therefore a useful semantic-QA target, not a failure to
+be hidden from the score.
+
+Mutation verdicts remain diagnostic:
+
+```text
+KILLED_DETERMINISTIC
+KILLED_SEMANTIC
+SURVIVED
+EQUIVALENT
+INVALID_MUTANT
+DEGRADED
+UNKNOWN
+```
+
+A survivor must be triaged before any aggregate mutation score is interpreted.
+Natural-language mutation has many equivalent or invalid mutants, so one raw
+percentage must never become publication authority.
+
+Heavy semantic mutation remains separate from `tools/dev/check`. The proven
+forum-client CI mechanics are reusable (exact candidate identity, bounded
+inputs, freshness receipts, advisory authority, durable artifacts), while its
+code-specific `semdup`/`semble`/`needle3` oracles are not assumed suitable for
+prose without measurement.

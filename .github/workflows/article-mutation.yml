@@ -1,0 +1,27 @@
+name: Article mutation baseline
+
+on:
+  pull_request:
+    paths:
+      - "journal/**"
+      - "qa/articles/**"
+      - "qa/argument-graphs/**"
+      - "qa/evidence/**"
+      - "qa/mutation/**"
+      - "tools/article_qa.py"
+      - "tools/article_mutation_qa.py"
+      - "tools/ci/article-mutation-test"
+      - "requirements/ci-article-mutation.txt"
+      - ".github/workflows/article-mutation.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  article-mutation:
+    uses: TeaShaman-cyber/marcopolo-cookbook/.github/workflows/reusable-mutation-test.yml@db03f5b1234f8a12244a0f513ed84dd976eb4051
+    with:
+      python_version: "3.11"
+      requirements_file: requirements/ci-article-mutation.txt
+      mutation_endpoint: tools/ci/article-mutation-test
