@@ -1,0 +1,2 @@
+# Article mutation baseline uses Python stdlib only.
+# Kept as a caller-owned requirements contract for the reusable mutation workflow.

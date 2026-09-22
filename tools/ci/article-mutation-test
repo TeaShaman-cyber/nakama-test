@@ -1,0 +1,13 @@
+#!/bin/sh
+set -eu
+
+ROOT=$(git rev-parse --show-toplevel 2>/dev/null) || {
+    printf '%s\n' 'article-mutation-test: not inside a Git worktree' >&2
+    exit 2
+}
+cd "$ROOT"
+
+RECEIPT=${MUTATION_TEST_RECEIPT:-${RUNNER_TEMP:-/tmp}/article-mutation-receipt.json}
+python tools/article_mutation_qa.py \
+  --manifest qa/mutation/2026-09-22-readme-baseline.json \
+  --receipt "$RECEIPT"

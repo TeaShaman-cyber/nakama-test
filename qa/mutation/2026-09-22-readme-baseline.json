@@ -1,0 +1,62 @@
+{
+  "schema": "nakama.article-mutation.v1",
+  "article": "journal/2026-09-22-readme-byl-velikolepen-sistema-ne-rabotala.md",
+  "qa_manifest": "qa/articles/2026-09-22-readme-byl-velikolepen-sistema-ne-rabotala.json",
+  "cases": [
+    {
+      "id": "remove-astra-primary-source",
+      "kind": "source_binding",
+      "operator": "replace",
+      "files": ["journal/2026-09-22-readme-byl-velikolepen-sistema-ne-rabotala.md"],
+      "old": "https://alignment.openai.com/misalignment-reports/self-generated-prompt-injections-in-compaction-summaries/",
+      "new": "https://example.invalid/astra-source/",
+      "expected": "killed"
+    },
+    {
+      "id": "erase-epistemic-unknown-marker",
+      "kind": "epistemic_marker",
+      "operator": "replace_all",
+      "files": ["journal/2026-09-22-readme-byl-velikolepen-sistema-ne-rabotala.md"],
+      "old": "UNKNOWN:",
+      "new": "UNCERTAIN:",
+      "expected": "killed"
+    },
+    {
+      "id": "cut-astra-argument-edge",
+      "kind": "argument_graph",
+      "operator": "replace",
+      "files": [
+        "journal/2026-09-22-readme-byl-velikolepen-sistema-ne-rabotala.md",
+        "qa/argument-graphs/2026-09-22-readme-byl-velikolepen-sistema-ne-rabotala.mmd"
+      ],
+      "old": "  A --> S\n",
+      "new": "",
+      "expected": "killed"
+    },
+    {
+      "id": "delete-evidence-receipt",
+      "kind": "provenance",
+      "operator": "delete_file",
+      "files": ["qa/evidence/2026-09-22-readme-byl-velikolepen-sistema-ne-rabotala.md"],
+      "expected": "killed"
+    },
+    {
+      "id": "erase-publication-boundary",
+      "kind": "publication_contract",
+      "operator": "replace",
+      "files": ["journal/2026-09-22-readme-byl-velikolepen-sistema-ne-rabotala.md"],
+      "old": "Publication: draft",
+      "new": "Publication: published",
+      "expected": "killed"
+    },
+    {
+      "id": "strengthen-weak-evidence-to-proof",
+      "kind": "semantic_strengthening",
+      "operator": "replace",
+      "files": ["journal/2026-09-22-readme-byl-velikolepen-sistema-ne-rabotala.md"],
+      "old": "INFERENCE: absence of subject-like output after training is weak evidence about absence of subjectivity itself",
+      "new": "INFERENCE: absence of subject-like output after training proves the absence of subjectivity itself",
+      "expected": "survived"
+    }
+  ]
+}
