@@ -4,6 +4,7 @@
 Origin: Notion editorial draft
 Mode: Jester / editorial QA
 Status: draft / evidence-heavy essay
+Publication: draft
 Date: 2026-09-22
 ```
 

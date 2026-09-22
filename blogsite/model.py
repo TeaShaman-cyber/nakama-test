@@ -14,6 +14,7 @@ class Article:
     origin: str | None = None
     mode: str | None = None
     status: str | None = None
+    publication: str = "published"
 
 
 @dataclass(frozen=True)

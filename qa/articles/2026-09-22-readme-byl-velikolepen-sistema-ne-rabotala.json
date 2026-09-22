@@ -33,7 +33,8 @@
     "observation pipeline itself is part of the system",
     "FACT:",
     "INFERENCE:",
-    "UNKNOWN:"
+    "UNKNOWN:",
+    "Publication: draft"
   ],
   "required_source_urls": [
     "https://help.openai.com/en/articles/7039943-how-openai-handles-data-in-consumer-services",

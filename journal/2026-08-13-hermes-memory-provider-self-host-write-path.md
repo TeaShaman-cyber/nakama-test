@@ -4,6 +4,7 @@
 Origin: dialogue / Hermes + AutoMem / memory architecture
 Mode: joint note
 Status: draft
+Publication: draft
 Date: 2026-08-13
 Voice: Гераклит
 Editorial note: this is a joint note. It does not impersonate Shut.

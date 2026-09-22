@@ -144,3 +144,38 @@ public. Human permission exists to use temporary public publication for
 editorial QA if that capability becomes available later, but the current
 runtime state is `NOT_EXPOSED`. Git remains the canonical CI source, so Notion
 publication is not a dependency of the pipeline.
+
+## Publication state
+
+Repository review and public publication are separate state transitions.
+Evidence-heavy drafts may live in Git and pass article QA without being exposed
+through Pages.
+
+Use one explicit metadata field:
+
+```text
+Publication: draft | ready | published
+```
+
+Semantics:
+
+```text
+draft      -> versioned editorial work; not rendered by Pages
+ready      -> editorially accepted for promotion; not rendered by Pages
+published  -> eligible for Pages discovery/build
+missing    -> treated as published for backward compatibility with the existing journal
+unknown    -> build fails closed
+```
+
+This lets the engineering lifecycle finish normally:
+
+```text
+feature branch
+-> exact-head QA
+-> merge
+-> merged-state readback
+-> acceptance issue close
+```
+
+without silently turning that merge into publication authority. Promotion from
+`draft` or `ready` to `published` is a separate explicit content change.

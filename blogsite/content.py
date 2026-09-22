@@ -28,6 +28,16 @@ def _metadata(text: str) -> dict[str, str]:
     return out
 
 
+def _publication_state(fields: dict[str, str]) -> str:
+    raw = fields.get("Publication")
+    if raw is None:
+        return "published"
+    state = raw.strip().lower()
+    if state not in {"draft", "ready", "published"}:
+        raise ValueError(f"Unknown Publication state: {raw}")
+    return state
+
+
 def extract_excerpt(text: str) -> str:
     in_fence = False
     after_title = False
@@ -72,6 +82,9 @@ def discover_articles(journal_dir: Path, metadata: SiteMetadata) -> list[Article
             raise ValueError(f"Journal filename lacks YYYY-MM-DD prefix: {path.name}")
         text = path.read_text(encoding="utf-8")
         fields = _metadata(text)
+        publication = _publication_state(fields)
+        if publication != "published":
+            continue
         articles.append(
             Article(
                 source_name=path.name,
@@ -84,6 +97,7 @@ def discover_articles(journal_dir: Path, metadata: SiteMetadata) -> list[Article
                 origin=fields.get("Origin"),
                 mode=fields.get("Mode"),
                 status=fields.get("Status"),
+                publication=publication,
             )
         )
     return sorted(
