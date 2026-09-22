@@ -25,7 +25,7 @@
     "## IV. Эпистемическая архитектура: что вообще способен доказать observation channel",
     "## V. Наблюдатель тоже часть системы: data-flow и policy layer",
     "## VI. Вывод: различимость состояний и честный UNKNOWN",
-    "## Приложение: редакторский evidence pack"
+    "## Приложение: карта аргумента и evidence receipt"
   ],
   "required_markers": [
     "trained non-claim != ontological absence",
@@ -46,5 +46,6 @@
     "https://alignment.openai.com/misalignment-reports/self-generated-prompt-injections-in-compaction-summaries/",
     "https://model-spec.openai.com/2026-08-18.html",
     "https://www.nber.org/papers/w23180"
-  ]
+  ],
+  "evidence_receipt": "qa/evidence/2026-09-22-readme-byl-velikolepen-sistema-ne-rabotala.md"
 }

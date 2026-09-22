@@ -47,6 +47,8 @@ const articles = files.map((file) => {
   const text = readFileSync(join(journalDir, file), "utf8");
   const mode = field(text, "Mode");
   const voice = field(text, "Voice");
+  const publicationRaw = field(text, "Publication");
+  const publication = publicationRaw?.toLowerCase() ?? "published";
   const row = {
     file,
     title: title(text),
@@ -54,6 +56,8 @@ const articles = files.map((file) => {
     mode,
     voice,
     status: field(text, "Status"),
+    publication,
+    publication_explicit: publicationRaw !== null,
     origin: field(text, "Origin"),
     series: seriesByFile[file]?.series ?? [],
     words: words(text),
@@ -68,6 +72,7 @@ const articles = files.map((file) => {
   if (!row.date) row.metadata_gaps.push("missing_date");
   if (!row.mode) row.metadata_gaps.push("missing_mode");
   if (!row.status) row.metadata_gaps.push("missing_status");
+  if (!["draft", "ready", "published"].includes(row.publication)) row.metadata_gaps.push("invalid_publication");
   if (row.mode === "joint note" && !row.voice) row.metadata_gaps.push("joint_note_missing_voice");
   if (!row.in_index) row.metadata_gaps.push("missing_index_link");
   if (row.series.length === 0) row.metadata_gaps.push("missing_series");
@@ -95,6 +100,12 @@ const report = {
     ]),
   ),
   gap_counts: gapCounts,
+  publication_counts: Object.fromEntries(
+    ["draft", "ready", "published"].map((state) => [
+      state,
+      articles.filter((article) => article.publication === state).length,
+    ]),
+  ),
   articles,
 };
 
@@ -108,9 +119,10 @@ if (jsonOutput) {
   console.log(`index missing files: ${report.index_missing_files.length}`);
   console.log(`index orphan links: ${report.index_orphans.length}`);
   console.log(`metadata gaps: ${JSON.stringify(report.gap_counts)}`);
+  console.log(`publication: ${JSON.stringify(report.publication_counts)}`);
   console.log("\nARTICLES");
   for (const article of articles) {
     const gaps = article.metadata_gaps.length ? article.metadata_gaps.join(",") : "OK";
-    console.log(`${article.file} | ${article.date ?? "?"} | ${article.mode ?? "?"} | series=${article.series.join(",") || "-"} | ${gaps}`);
+    console.log(`${article.file} | ${article.date ?? "?"} | ${article.mode ?? "?"} | publication=${article.publication} | series=${article.series.join(",") || "-"} | ${gaps}`);
   }
 }

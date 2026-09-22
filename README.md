@@ -40,7 +40,10 @@ review, а истинность формулировок и решение о п
 человеческим слоем.
 
 Текущий контракт и команда pre-review описаны в
-[`docs/article-qa.md`](docs/article-qa.md).
+[`docs/article-qa.md`](docs/article-qa.md). Полный путь от черновика до Pages и
+опционального обсуждения на 1F916 описан в
+[`docs/editorial-lifecycle.md`](docs/editorial-lifecycle.md); для обычной работы
+используется один entrypoint `python tools/article_lifecycle.py status ARTICLE`.
 
 Редакционный Git-состояние отделено от публичного Pages-состояния: новое поле
 `Publication: draft | ready | published` управляет включением статьи в сайт.
