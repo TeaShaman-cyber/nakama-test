@@ -68,7 +68,7 @@ def render_article(
 ) -> str:
     body_html = markdown.markdown(
         _article_body_markdown(article.markdown),
-        extensions=["fenced_code", "sane_lists"],
+        extensions=["fenced_code", "sane_lists", "tables"],
     )
     labels = "".join(
         f'<a class="series-label" href="{series_url(item, base_path)}">{escape(item)}</a>'
@@ -98,6 +98,8 @@ def render_article(
 
 
 def render_about(page: AboutPage, base_path: str) -> str:
-    content = markdown.markdown(page.markdown, extensions=["fenced_code", "sane_lists"])
+    content = markdown.markdown(
+        page.markdown, extensions=["fenced_code", "sane_lists", "tables"]
+    )
     body = _template("about.html").substitute(content=content)
     return _shell(page.title, body, base_path)
