@@ -322,3 +322,9 @@ whether subjectivity exists, or whether the model is a scientific oracle.
 External/runtime unavailability is recorded as unavailable rather than a fake
 semantic PASS. Semantic baseline regression is a real QA regression and fails
 the advisory job.
+
+The NLI witness strips the leading epistemic annotation (`FACT:`, `INFERENCE:`,
+or `UNKNOWN:`) before model inference. Those labels are QA metadata about the
+claim's epistemic role, not part of the proposition whose semantic equivalence
+is being compared. The raw mutation text remains versioned in the mutation
+manifest; the receipt records `semantic_normalization=strip_epistemic_prefix`.

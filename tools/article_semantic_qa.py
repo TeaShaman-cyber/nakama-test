@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import re
 import subprocess
 from pathlib import Path
 
@@ -11,6 +12,13 @@ ROOT = Path(__file__).resolve().parents[1]
 
 class SemanticQaError(RuntimeError):
     pass
+
+
+EPISTEMIC_PREFIX = re.compile(r"^(?:FACT|INFERENCE|UNKNOWN):\s*", re.IGNORECASE)
+
+
+def semantic_text(value: str) -> str:
+    return EPISTEMIC_PREFIX.sub("", value.strip(), count=1)
 
 
 def sha256(path: Path) -> str:
@@ -121,8 +129,10 @@ def infer_pairs(profile: dict, model_dir: Path) -> list[dict]:
             raise SemanticQaError(
                 f"semantic case requires text old/new: {spec['mutation_id']}"
             )
-        forward = entailment(original, mutant)
-        reverse = entailment(mutant, original)
+        original_semantic = semantic_text(original)
+        mutant_semantic = semantic_text(mutant)
+        forward = entailment(original_semantic, mutant_semantic)
+        reverse = entailment(mutant_semantic, original_semantic)
         observed = classify_relation(
             forward,
             reverse,
@@ -137,6 +147,7 @@ def infer_pairs(profile: dict, model_dir: Path) -> list[dict]:
                 "expected_match": observed == spec["expected_relation"],
                 "forward_entailment": forward,
                 "reverse_entailment": reverse,
+                "semantic_normalization": "strip_epistemic_prefix",
             }
         )
     return results

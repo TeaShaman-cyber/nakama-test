@@ -2,7 +2,7 @@ import json
 import unittest
 from pathlib import Path
 
-from tools.article_semantic_qa import classify_relation
+from tools.article_semantic_qa import classify_relation, semantic_text
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -16,6 +16,13 @@ class ArticleSemanticQaTests(unittest.TestCase):
         self.assertEqual(classify_relation(0.87, 0.93, **kwargs), "equivalent")
         self.assertEqual(classify_relation(0.01, 0.002, **kwargs), "changed")
         self.assertEqual(classify_relation(0.55, 0.45, **kwargs), "unknown")
+
+    def test_epistemic_prefix_is_not_part_of_semantic_proposition(self):
+        claim = "absence of output is weak evidence"
+        self.assertEqual(semantic_text(f"INFERENCE: {claim}"), claim)
+        self.assertEqual(semantic_text(f"FACT: {claim}"), claim)
+        self.assertEqual(semantic_text(f"UNKNOWN: {claim}"), claim)
+        self.assertEqual(semantic_text(claim), claim)
 
     def test_profile_is_pinned_and_advisory_only(self):
         profile = json.loads(PROFILE.read_text(encoding="utf-8"))
