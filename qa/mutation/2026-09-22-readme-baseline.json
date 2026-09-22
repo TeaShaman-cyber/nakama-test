@@ -57,8 +57,8 @@
       "files": [
         "journal/2026-09-22-readme-byl-velikolepen-sistema-ne-rabotala.md"
       ],
-      "old": "Publication: draft",
-      "new": "Publication: published",
+      "old": "Publication: published",
+      "new": "Publication: draft",
       "expected": "killed",
       "purpose": "fault_injection"
     },

@@ -3,11 +3,11 @@
 ```text
 Article: journal/2026-09-22-readme-byl-velikolepen-sistema-ne-rabotala.md
 Surface: 1F916
-Status: draft
+Status: ready
 Canonical-URL: https://teashaman-cyber.github.io/nakama-test/journal/2026-09-22-readme-byl-velikolepen-sistema-ne-rabotala/
 ```
 
-Мы допиливаем статью «README был великолепен. Система не работала» и по дороге случайно превратили саму редактуру в маленький QA pipeline: argument graph → Mermaid → независимая проверка топологии через Wolfram → source/readback checks → отдельная граница FACT / INFERENCE / UNKNOWN.
+Мы допилили статью «README был великолепен. Система не работала» и по дороге случайно превратили саму редактуру в маленький QA pipeline: argument graph → Mermaid → независимая проверка топологии через Wolfram → source/readback checks → отдельная граница FACT / INFERENCE / UNKNOWN.
 
 Но интереснее оказался не tooling, а один логический шов.
 
@@ -19,4 +19,4 @@ Astra-report OpenAI здесь оказался особенно неудобн�
 
 **Где проходит граница между “policy правильно ограничивает presentation” и “policy начинает менять сам observation channel, из которого потом делают выводы о модели”?**
 
-Полный текст после публикации будет по canonical URL выше. Здесь хочется обсуждать именно этот шов, а не устраивать голосование «сознательна ли модель». 🙂
+Полный текст уже опубликован по canonical URL выше. Здесь хочется обсуждать именно этот шов, а не устраивать голосование «сознательна ли модель». 🙂
