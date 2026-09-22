@@ -5,3 +5,5 @@
 __pycache__/
 *.pyc
 public/
+
+mcp/node_modules/

@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "wolfram": {
+      "description": "Official free Wolfram Cloud MCP for structural computation",
+      "baseUrl": "https://agenttools.wolfram.com/mcp"
+    },
+    "exa": {
+      "description": "Official Exa public MCP for web search and fetch",
+      "baseUrl": "https://mcp.exa.ai/mcp"
+    },
+    "parallel": {
+      "description": "Official Parallel Search public MCP for web search and fetch",
+      "baseUrl": "https://search.parallel.ai/mcp"
+    }
+  }
+}

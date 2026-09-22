@@ -1,0 +1,9 @@
+{
+  "name": "nakama-test-mcporter-workbench",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Pinned MCP client for network-advisory article QA",
+  "dependencies": {
+    "mcporter": "0.13.8"
+  }
+}

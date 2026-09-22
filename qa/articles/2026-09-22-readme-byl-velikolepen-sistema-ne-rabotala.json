@@ -1,0 +1,50 @@
+{
+  "article": "journal/2026-09-22-readme-byl-velikolepen-sistema-ne-rabotala.md",
+  "graph": "qa/argument-graphs/2026-09-22-readme-byl-velikolepen-sistema-ne-rabotala.mmd",
+  "conclusion": "C",
+  "roots": [
+    "R1",
+    "R2",
+    "R3",
+    "R4",
+    "U",
+    "Q",
+    "D",
+    "G",
+    "H",
+    "W",
+    "L",
+    "I",
+    "A",
+    "P"
+  ],
+  "required_headings": [
+    "## I. Operational truth: когда интерфейс, runtime и authority расходятся",
+    "## II. Feedback loop: зрелость видна после расхождения",
+    "## III. Проверка на себе: consistency != correctness",
+    "## IV. Эпистемическая архитектура: что вообще способен доказать observation channel",
+    "## V. Наблюдатель тоже часть системы: data-flow и policy layer",
+    "## VI. Вывод: различимость состояний и честный UNKNOWN",
+    "## Приложение: редакторский evidence pack"
+  ],
+  "required_markers": [
+    "trained non-claim != ontological absence",
+    "observable silence != absence",
+    "observation pipeline itself is part of the system",
+    "FACT:",
+    "INFERENCE:",
+    "UNKNOWN:",
+    "Publication: draft"
+  ],
+  "required_source_urls": [
+    "https://help.openai.com/en/articles/7039943-how-openai-handles-data-in-consumer-services",
+    "https://www.404media.co/inside-project-lily-the-humans-reading-your-chatgpt-chats/",
+    "https://openai.com/index/our-commitment-to-community-safety/",
+    "https://www.securitylab.ru/news/577662.php",
+    "https://openai.com/index/understanding-neural-networks-through-sparse-circuits/",
+    "https://www.anthropic.com/research/tracing-thoughts-language-model",
+    "https://alignment.openai.com/misalignment-reports/self-generated-prompt-injections-in-compaction-summaries/",
+    "https://model-spec.openai.com/2026-08-18.html",
+    "https://www.nber.org/papers/w23180"
+  ]
+}

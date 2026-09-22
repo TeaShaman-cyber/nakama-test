@@ -25,17 +25,8 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -r blogsite/requirements.txt -r blogsite/requirements-dev.txt
 
-      - name: Test and lint
-        run: |
-          python -m unittest discover -s blogsite/tests -v
-          ruff check blogsite
-          ruff format --check blogsite
-
-      - name: Build static site
-        run: python -m blogsite.build --repo-root . --output public --base-path /nakama-test/
-
-      - name: Verify canonical sources unchanged
-        run: git diff --exit-code -- README.md about journal archive
+      - name: Pre-review QA and build
+        run: ./tools/dev/check public
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5

@@ -1,0 +1,26 @@
+#!/bin/sh
+set -eu
+
+repo=$(CDPATH= cd -- "$(dirname -- "$0")/../.." && pwd)
+cd "$repo"
+
+output=${1:-}
+cleanup=
+if [ -z "$output" ]; then
+    output=$(mktemp -d)
+    cleanup=$output
+fi
+
+finish() {
+    if [ -n "$cleanup" ]; then
+        rm -rf "$cleanup"
+    fi
+}
+trap finish EXIT HUP INT TERM
+
+python -m unittest discover -s blogsite/tests -v
+python -m ruff check blogsite tools/article_qa.py tools/article_network_qa.py
+python -m ruff format --check blogsite tools/article_qa.py tools/article_network_qa.py
+python tools/article_qa.py
+python -m blogsite.build --repo-root . --output "$output" --base-path /nakama-test/
+printf '%s\n' "DEV_CHECK_PASS output=$output"

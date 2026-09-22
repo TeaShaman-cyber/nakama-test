@@ -9,7 +9,7 @@ ARTICLE = Article(
     "2026-01-01-test",
     "Тестовая запись",
     date(2026, 1, 1),
-    "# Тестовая запись\n\n> Цитата\n\n```text\nPASS\n```",
+    "# Тестовая запись\n\n> Цитата\n\n```text\nPASS\n```\n\n| A | B |\n| --- | --- |\n| 1 | 2 |",
     "Цитата",
     ("Квантовый чай",),
 )
@@ -19,6 +19,7 @@ class RenderTests(unittest.TestCase):
     def test_article(self):
         html = render_article(ARTICLE, None, None, "/nakama-test/")
         self.assertIn("<blockquote>", html)
+        self.assertIn("<table>", html)
         self.assertNotIn("Origin:", html)
         self.assertEqual(html.count("<h1>"), 1)
         self.assertIn("/nakama-test/static/style.css", html)
