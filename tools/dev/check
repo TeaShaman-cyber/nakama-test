@@ -19,8 +19,8 @@ finish() {
 trap finish EXIT HUP INT TERM
 
 python -m unittest discover -s blogsite/tests -v
-python -m ruff check blogsite tools/article_qa.py tools/article_network_qa.py tools/article_lifecycle.py tools/article_mutation_qa.py
-python -m ruff format --check blogsite tools/article_qa.py tools/article_network_qa.py tools/article_lifecycle.py tools/article_mutation_qa.py
+python -m ruff check blogsite tools/article_qa.py tools/article_network_qa.py tools/article_lifecycle.py tools/article_mutation_qa.py tools/article_semantic_qa.py
+python -m ruff format --check blogsite tools/article_qa.py tools/article_network_qa.py tools/article_lifecycle.py tools/article_mutation_qa.py tools/article_semantic_qa.py
 python tools/article_qa.py
 python tools/article_lifecycle.py check
 python -m blogsite.build --repo-root . --output "$output" --base-path /nakama-test/

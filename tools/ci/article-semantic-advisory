@@ -1,0 +1,62 @@
+#!/bin/sh
+set -eu
+
+ROOT=$(git rev-parse --show-toplevel 2>/dev/null) || {
+    printf '%s\n' 'article-semantic-advisory: not inside a Git worktree' >&2
+    exit 2
+}
+cd "$ROOT"
+
+PROFILE=${ARTICLE_SEMANTIC_PROFILE:-qa/semantic/article-nli.json}
+RECEIPT=${ARTICLE_SEMANTIC_RECEIPT:-${RUNNER_TEMP:-/tmp}/article-semantic-receipt.json}
+MODEL_DIR=${ARTICLE_SEMANTIC_MODEL_DIR:-${RUNNER_TEMP:-/tmp}/article-semantic-model}
+SOURCE_SHA=$(git rev-parse HEAD) || exit 2
+mkdir -p "$(dirname "$RECEIPT")" "$MODEL_DIR/onnx"
+
+model_repo=$(python - <<'PY'
+import json, os
+x=json.load(open(os.environ.get('ARTICLE_SEMANTIC_PROFILE','qa/semantic/article-nli.json')))
+print(x['model']['repo'])
+PY
+)
+revision=$(python - <<'PY'
+import json, os
+x=json.load(open(os.environ.get('ARTICLE_SEMANTIC_PROFILE','qa/semantic/article-nli.json')))
+print(x['model']['revision'])
+PY
+)
+
+base="https://huggingface.co/$model_repo/resolve/$revision"
+status=0
+for rel in config.json tokenizer.json onnx/model_quantized.onnx; do
+    target="$MODEL_DIR/$rel"
+    mkdir -p "$(dirname "$target")"
+    if ! curl -fL --retry 3 --retry-delay 2 --connect-timeout 20 --max-time 180 "$base/$rel" -o "$target"; then
+        status=1
+        break
+    fi
+done
+
+if [ "$status" -ne 0 ]; then
+    SOURCE_SHA="$SOURCE_SHA" RECEIPT="$RECEIPT" PROFILE="$PROFILE" MODEL_REPO="$model_repo" REVISION="$revision" python - <<'PY'
+import json, os
+from pathlib import Path
+payload={
+  'schema':'nakama.article-semantic-nli.receipt.v1',
+  'status':'SEMANTIC_EXTERNAL_UNAVAILABLE',
+  'source_sha':os.environ['SOURCE_SHA'],
+  'acceptance_authority':False,
+  'profile':os.environ['PROFILE'],
+  'model':{'repo':os.environ['MODEL_REPO'],'revision':os.environ['REVISION']},
+  'error':'model download failed from pinned Hugging Face revision',
+}
+Path(os.environ['RECEIPT']).write_text(json.dumps(payload,indent=2,sort_keys=True)+'\n')
+print('ARTICLE_SEMANTIC_STATUS SEMANTIC_EXTERNAL_UNAVAILABLE')
+PY
+    exit 0
+fi
+
+python tools/article_semantic_qa.py \
+  --profile "$PROFILE" \
+  --model-dir "$MODEL_DIR" \
+  --receipt "$RECEIPT"

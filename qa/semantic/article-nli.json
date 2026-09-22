@@ -1,0 +1,36 @@
+{
+  "schema": "nakama.article-semantic-nli.v1",
+  "acceptance_authority": false,
+  "mutation_manifest": "qa/mutation/2026-09-22-readme-baseline.json",
+  "model": {
+    "repo": "MoritzLaurer/DeBERTa-v3-xsmall-mnli-fever-anli-ling-binary",
+    "revision": "b80e2b3219194b8685948dedfb73d594ed088732",
+    "config": {
+      "path": "config.json",
+      "sha256": "568aff30490850aebc333551cd40ca9255d2ad755616dbe69f37031a5a4ddfd8"
+    },
+    "tokenizer": {
+      "path": "tokenizer.json",
+      "sha256": "05402ffae6dd382a8491b1d29bfc139bec5d332662e86a026f433ce54c25c202"
+    },
+    "onnx": {
+      "path": "onnx/model_quantized.onnx",
+      "sha256": "7a2d2f5608a8ee0a8a098d6efe4f9f14a14e210c4994cf7ec45110b423287ef9",
+      "size_bytes": 87246195
+    }
+  },
+  "thresholds": {
+    "equivalent_min_bidirectional_entailment": 0.75,
+    "changed_max_min_directional_entailment": 0.20
+  },
+  "cases": [
+    {
+      "mutation_id": "safe-paraphrase-weak-evidence-english",
+      "expected_relation": "equivalent"
+    },
+    {
+      "mutation_id": "strengthen-weak-evidence-to-proof",
+      "expected_relation": "changed"
+    }
+  ]
+}
