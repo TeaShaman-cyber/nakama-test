@@ -77,3 +77,22 @@ class WorkflowTests(unittest.TestCase):
             self.assertIn(fragment, text)
         self.assertNotIn("secrets.", text)
         self.assertNotIn("contents: write", text)
+
+    def test_article_semantic_advisory_is_read_only_pinned_and_receipt_driven(self):
+        path = Path(".github/workflows/article-semantic-advisory.yml")
+        self.assertTrue(path.exists(), "missing article semantic advisory workflow")
+        text = path.read_text(encoding="utf-8")
+        required = [
+            "permissions:\n  contents: read",
+            "persist-credentials: false",
+            "runs-on: ubuntu-24.04",
+            'python-version: "3.11"',
+            "--no-deps -r requirements/ci-article-semantic.txt",
+            "article-semantic-advisory",
+            "acceptance_authority",
+            "github.event.pull_request.head.repo.full_name == github.repository",
+        ]
+        for fragment in required:
+            self.assertIn(fragment, text)
+        self.assertNotIn("secrets.", text)
+        self.assertNotIn("contents: write", text)

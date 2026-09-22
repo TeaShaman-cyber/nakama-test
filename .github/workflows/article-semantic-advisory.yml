@@ -1,0 +1,108 @@
+name: Article semantic advisory
+
+on:
+  pull_request:
+    paths:
+      - "journal/**"
+      - "qa/mutation/**"
+      - "qa/semantic/**"
+      - "tools/article_semantic_qa.py"
+      - "tools/ci/article-semantic-advisory"
+      - "requirements/ci-article-semantic.txt"
+      - ".github/workflows/article-semantic-advisory.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  semantic-advisory:
+    if: github.event_name == 'workflow_dispatch' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Checkout exact candidate
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Verify checkout identity
+        shell: bash
+        env:
+          SOURCE_SHA: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          observed="$(git rev-parse HEAD)"
+          test "$observed" = "$SOURCE_SHA"
+          printf 'ARTICLE_SEMANTIC_SOURCE_SHA %s\n' "$observed"
+
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.11"
+
+      - id: runtime
+        name: Install pinned minimal NLI runtime
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --disable-pip-version-check --no-deps -r requirements/ci-article-semantic.txt
+          python - <<'PY'
+          import importlib.metadata as m
+          for name in ("numpy","flatbuffers","packaging","protobuf","onnxruntime","tokenizers"):
+              print(f"ARTICLE_SEMANTIC_RUNTIME {name}={m.version(name)}")
+          PY
+
+      - name: Record unavailable runtime
+        if: steps.runtime.outcome != 'success'
+        shell: bash
+        env:
+          RECEIPT: ${{ runner.temp }}/article-semantic/receipt.json
+          SOURCE_SHA: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          mkdir -p "$(dirname "$RECEIPT")"
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          payload={
+            "schema":"nakama.article-semantic-nli.receipt.v1",
+            "status":"SEMANTIC_RUNTIME_UNAVAILABLE",
+            "source_sha":os.environ["SOURCE_SHA"],
+            "acceptance_authority":False,
+            "profile":"qa/semantic/article-nli.json",
+            "error":"pinned Python runtime installation failed",
+          }
+          Path(os.environ["RECEIPT"]).write_text(json.dumps(payload,indent=2,sort_keys=True)+"\n")
+          print("ARTICLE_SEMANTIC_STATUS SEMANTIC_RUNTIME_UNAVAILABLE")
+          PY
+
+      - name: Run semantic NLI advisory
+        if: steps.runtime.outcome == 'success'
+        env:
+          ARTICLE_SEMANTIC_PROFILE: qa/semantic/article-nli.json
+          ARTICLE_SEMANTIC_RECEIPT: ${{ runner.temp }}/article-semantic/receipt.json
+          ARTICLE_SEMANTIC_MODEL_DIR: ${{ runner.temp }}/article-semantic/model
+        run: tools/ci/article-semantic-advisory
+
+      - name: Read semantic receipt
+        if: always()
+        shell: bash
+        env:
+          RECEIPT: ${{ runner.temp }}/article-semantic/receipt.json
+        run: |
+          set -euo pipefail
+          test -f "$RECEIPT"
+          cat "$RECEIPT"
+
+      - name: Upload semantic receipt
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: article-semantic-advisory
+          path: ${{ runner.temp }}/article-semantic/receipt.json
+          if-no-files-found: error
+          retention-days: 14

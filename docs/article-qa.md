@@ -280,3 +280,51 @@ verdict=SURVIVED
 
 A surviving mutant is therefore not interpreted from the word `SURVIVED`
 alone; its declared purpose and human triage are part of the receipt.
+
+### Semantic NLI advisory
+
+The known survivor `weak evidence -> proves absence` requires a semantic witness,
+but a language model must not become truth authority for the article. The first
+semantic lane therefore asks a narrower question: **did the mutation preserve
+meaning, or materially change the claim?**
+
+The versioned profile is `qa/semantic/article-nli.json`. It uses the quantized
+ONNX artifact from `MoritzLaurer/DeBERTa-v3-xsmall-mnli-fever-anli-ling-binary`
+at an exact model revision with SHA-256 verification for the config, tokenizer,
+and ONNX weight file.
+
+The runtime is intentionally small and runs only on GitHub Actions:
+
+```text
+NumPy + ONNX Runtime + tokenizers
+```
+
+No PyTorch or Transformers runtime is required. MarcoPolo remains the
+orchestration/readback layer and does not execute the model.
+
+Two calibration relations are versioned:
+
+```text
+safe paraphrase of the exact English claim -> expected equivalent
+weak evidence -> proves absence             -> expected changed
+```
+
+The NLI model is evaluated bidirectionally. High entailment in both directions
+is classified as `equivalent`; a low entailment direction is classified as
+`changed`; the middle region remains `unknown`. The receipt records both raw
+entailment probabilities, exact source SHA, model revision/hashes, thresholds,
+and `acceptance_authority=false`.
+
+A semantic match means only that the pinned witness reproduces the declared
+mutation relation. It does **not** establish whether the original claim is true,
+whether subjectivity exists, or whether the model is a scientific oracle.
+
+External/runtime unavailability is recorded as unavailable rather than a fake
+semantic PASS. Semantic baseline regression is a real QA regression and fails
+the advisory job.
+
+The NLI witness strips the leading epistemic annotation (`FACT:`, `INFERENCE:`,
+or `UNKNOWN:`) before model inference. Those labels are QA metadata about the
+claim's epistemic role, not part of the proposition whose semantic equivalence
+is being compared. The raw mutation text remains versioned in the mutation
+manifest; the receipt records `semantic_normalization=strip_epistemic_prefix`.
