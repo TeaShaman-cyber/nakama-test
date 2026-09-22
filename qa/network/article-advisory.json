@@ -33,13 +33,16 @@
     },
     {
       "id": "openai-interpretability-primary-source",
-      "provider": "exa",
-      "tool": "web_search_exa",
+      "provider": "parallel",
+      "tool": "web_search",
       "target_url": "https://openai.com/index/understanding-neural-networks-through-sparse-circuits/",
       "args": {
-        "query": "OpenAI understanding neural networks through sparse circuits interpretability",
-        "objective": "Find the official OpenAI sparse-circuits interpretability article. Rank openai.com first.",
-        "numResults": 3
+        "objective": "Find the official OpenAI article Understanding neural networks through sparse circuits.",
+        "search_queries": [
+          "OpenAI understanding neural networks sparse circuits",
+          "site:openai.com sparse circuits neural networks"
+        ],
+        "session_id": "b964c85dd68a49f9a8340e41a16fc419"
       }
     },
     {

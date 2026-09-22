@@ -179,6 +179,22 @@ def normalize_url(value: str) -> str:
     return value.strip().rstrip("/")
 
 
+def external_provider_degraded(payload) -> bool:
+    if not isinstance(payload, dict):
+        return False
+    meta = payload.get("_meta")
+    if isinstance(meta, dict):
+        if meta.get("ai.exa/rateLimited") is True:
+            return True
+    for item in payload.get("content", []):
+        if not isinstance(item, dict):
+            continue
+        text = str(item.get("text", "")).lower()
+        if "rate limit" in text or "rate-limited" in text or "rate limited" in text:
+            return True
+    return False
+
+
 def run_search_probe(mcporter: str, config: str, probe: dict, out_dir: Path) -> dict:
     provider = probe["provider"]
     tool = probe["tool"]
@@ -204,7 +220,7 @@ def run_search_probe(mcporter: str, config: str, probe: dict, out_dir: Path) -> 
     )
     target = normalize_url(probe["target_url"])
     found = target in raw.replace("\\/", "/")
-    if proc.returncode != 0 or payload is None:
+    if proc.returncode != 0 or payload is None or external_provider_degraded(payload):
         result = "DEGRADED_EXTERNAL_WITNESS"
     elif found:
         result = "FOUND_EXPECTED_SOURCE"
