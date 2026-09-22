@@ -3,22 +3,22 @@
   "schema": "nakama.article-publication.v1",
   "surfaces": {
     "forum": {
-      "article_sha256": null,
+      "article_sha256": "0c23b5891e3adab0966a41b83c6106285041057c09e6879851cf438babe136c1",
       "companion": "distribution/forum/2026-09-22-readme-byl-velikolepen-sistema-ne-rabotala.md",
-      "operation_id": null,
-      "post_id": null,
+      "operation_id": "8cb5851b7150426881d4da805070fe92",
+      "post_id": 6343,
       "role": "discussion_companion",
-      "state": "ready",
-      "verified_at": null
+      "state": "verified",
+      "verified_at": "2026-09-22T09:58:06.750288+00:00"
     },
     "pages": {
-      "article_sha256": null,
+      "article_sha256": "0c23b5891e3adab0966a41b83c6106285041057c09e6879851cf438babe136c1",
       "expected_url": "https://teashaman-cyber.github.io/nakama-test/journal/2026-09-22-readme-byl-velikolepen-sistema-ne-rabotala/",
-      "http_status": null,
+      "http_status": 200,
       "role": "canonical_publication",
-      "source_commit": null,
-      "state": "not_published",
-      "verified_at": null
+      "source_commit": "d8123d6f2b8ad395345cfc3b8bc1229a2ed04f25",
+      "state": "verified",
+      "verified_at": "2026-09-22T09:57:04.335049+00:00"
     }
   }
 }
