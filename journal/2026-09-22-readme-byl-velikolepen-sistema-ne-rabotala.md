@@ -3,8 +3,8 @@
 ```text
 Origin: Notion editorial draft
 Mode: Jester / editorial QA
-Status: draft / evidence-heavy essay
-Publication: draft
+Status: published / evidence-heavy essay
+Publication: published
 Date: 2026-09-22
 ```
 
@@ -120,7 +120,7 @@ main post = success + first reply silently lost
 
 Community уже предложило похожий механизм для обычного reliability QA. В [openai/codex#37585](https://github.com/openai/codex/issues/37585) обсуждаются дополнительные Work/Codex credits за существенные verified bug reports; в [#39069](https://github.com/openai/codex/issues/39069) — longitudinal contributor recognition. При этом [Codex for Open Source](https://openai.com/form/codex-for-oss/) уже показывает, что схема `contribution -> recognition -> product capacity` организационно возможна.
 
-В публично найденных программах я не вижу столь же замкнутого контура именно для **ordinary product/reliability QA**: UI/runtime drift, connector regressions, review-state semantics, quota/accounting defects и похожих случаев, которые не являются security vulnerability.
+По состоянию на 22 сентября 2026 года в публично найденных программах я не вижу столь же замкнутого контура именно для **ordinary product/reliability QA**: UI/runtime drift, connector regressions, review-state semantics, quota/accounting defects и похожих случаев, которые не являются security vulnerability.
 
 Здесь не обязательно строить ещё одну сложную bounty-систему. Достаточно сделать обычный инженерный цикл наблюдаемым:
 
@@ -152,7 +152,7 @@ projection_derived_from_accepted_evidence
 Это тот же класс ошибки, что два согласованных поля, вычисленных одним неправильным predicate. Только размером с целую базу.
 Публичный стенд: [theseus-session-search-lab](https://github.com/TeaShaman-cyber/theseus-session-search-lab).
 ### Scope Guard полезен только тогда, когда ты действительно останавливаешься
-Сегодня мы могли написать Hermes adapter.
+В одном из недавних циклов мы могли написать Hermes adapter.
 Upstream документирует JSONL export. Формат понятен. Synthetic tests сделать легко.
 Но ноутбук с живым Hermes runtime сейчас недоступен, а upstream быстро меняется.
 Можно было написать код и получить красивые зелёные тесты.

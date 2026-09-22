@@ -34,7 +34,7 @@
     "FACT:",
     "INFERENCE:",
     "UNKNOWN:",
-    "Publication: draft"
+    "Publication: published"
   ],
   "required_source_urls": [
     "https://help.openai.com/en/articles/7039943-how-openai-handles-data-in-consumer-services",
