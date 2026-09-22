@@ -116,6 +116,15 @@ def verify_manifest(path: Path) -> None:
     article = article_path.read_text(encoding="utf-8")
     graph = graph_path.read_text(encoding="utf-8").strip()
 
+    evidence_rel = manifest.get("evidence_receipt")
+    if evidence_rel is not None:
+        evidence_path = ROOT / evidence_rel
+        if not evidence_path.is_file():
+            fail(f"missing evidence receipt: {evidence_rel}")
+        evidence = evidence_path.read_text(encoding="utf-8")
+        if f"Article: {manifest['article']}" not in evidence:
+            fail(f"evidence receipt does not bind article: {evidence_rel}")
+
     h1 = [line for line in article.splitlines() if line.startswith("# ")]
     if len(h1) != 1:
         fail(
