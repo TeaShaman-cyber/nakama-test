@@ -242,3 +242,41 @@ forum-client CI mechanics are reusable (exact candidate identity, bounded
 inputs, freshness receipts, advisory authority, durable artifacts), while its
 code-specific `semdup`/`semble`/`needle3` oracles are not assumed suitable for
 prose without measurement.
+
+### Source-binding and metamorphic phase
+
+Presence of the right URLs is not sufficient. An article can keep every source
+URL while accidentally binding the wrong source to the wrong claim. Evidence-
+heavy article manifests may therefore point to a versioned source-binding
+contract under `qa/source-bindings/`.
+
+The contract currently binds five claim labels to exact sources. A mutation
+that swaps the OpenAI and Anthropic interpretability URLs preserves both valid
+URLs and would have passed the older presence-only test; it is now
+`KILLED_DETERMINISTIC` by the binding contract.
+
+External currentness remains advisory. The network lane independently checks
+that the OpenAI and Anthropic primary sources are still discoverable through
+Exa and Parallel Search. Search success establishes source availability and
+identity, not semantic entailment of every article claim.
+
+The mutation baseline also contains human-approved metamorphic relations. Two
+current examples are expected to survive:
+
+```text
+safe paraphrase of the subjectivity boundary -> SURVIVED
+remove Markdown emphasis from "policy layer" -> SURVIVED
+```
+
+These survivors have `purpose=metamorphic_invariance` and mean the deterministic
+QA is stable under that approved transformation. They are intentionally kept
+separate from the known semantic gap:
+
+```text
+weak evidence -> proves absence
+purpose=known_semantic_gap
+verdict=SURVIVED
+```
+
+A surviving mutant is therefore not interpreted from the word `SURVIVED`
+alone; its declared purpose and human triage are part of the receipt.

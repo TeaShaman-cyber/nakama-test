@@ -8,6 +8,7 @@ on:
       - "qa/argument-graphs/**"
       - "qa/evidence/**"
       - "qa/mutation/**"
+      - "qa/source-bindings/**"
       - "tools/article_qa.py"
       - "tools/article_mutation_qa.py"
       - "tools/ci/article-mutation-test"

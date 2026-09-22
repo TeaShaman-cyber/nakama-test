@@ -115,6 +115,7 @@ def run_case(case: dict) -> dict:
         return {
             "id": case["id"],
             "kind": case.get("kind"),
+            "purpose": case.get("purpose", "unspecified"),
             "operator": case["operator"],
             "expected": case["expected"],
             "verdict": verdict,
@@ -169,6 +170,15 @@ def main() -> int:
                     r["verdict"] == "KILLED_DETERMINISTIC" for r in results
                 ),
                 "survived": sum(r["verdict"] == "SURVIVED" for r in results),
+                "known_gap_survivors": sum(
+                    r["verdict"] == "SURVIVED" and r["purpose"] == "known_semantic_gap"
+                    for r in results
+                ),
+                "metamorphic_survivors": sum(
+                    r["verdict"] == "SURVIVED"
+                    and r["purpose"] == "metamorphic_invariance"
+                    for r in results
+                ),
                 "expected_matches": sum(r["expected_match"] for r in results),
             },
         }
@@ -203,7 +213,7 @@ def main() -> int:
             print(
                 "ARTICLE_MUTATION_CASE "
                 f"id={result['id']} verdict={result['verdict']} expected={result['expected']} "
-                f"match={str(result['expected_match']).lower()}"
+                f"purpose={result['purpose']} match={str(result['expected_match']).lower()}"
             )
     return code
 

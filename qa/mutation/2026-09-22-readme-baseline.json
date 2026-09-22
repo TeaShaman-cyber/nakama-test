@@ -7,19 +7,25 @@
       "id": "remove-astra-primary-source",
       "kind": "source_binding",
       "operator": "replace",
-      "files": ["journal/2026-09-22-readme-byl-velikolepen-sistema-ne-rabotala.md"],
+      "files": [
+        "journal/2026-09-22-readme-byl-velikolepen-sistema-ne-rabotala.md"
+      ],
       "old": "https://alignment.openai.com/misalignment-reports/self-generated-prompt-injections-in-compaction-summaries/",
       "new": "https://example.invalid/astra-source/",
-      "expected": "killed"
+      "expected": "killed",
+      "purpose": "fault_injection"
     },
     {
       "id": "erase-epistemic-unknown-marker",
       "kind": "epistemic_marker",
       "operator": "replace_all",
-      "files": ["journal/2026-09-22-readme-byl-velikolepen-sistema-ne-rabotala.md"],
+      "files": [
+        "journal/2026-09-22-readme-byl-velikolepen-sistema-ne-rabotala.md"
+      ],
       "old": "UNKNOWN:",
       "new": "UNCERTAIN:",
-      "expected": "killed"
+      "expected": "killed",
+      "purpose": "fault_injection"
     },
     {
       "id": "cut-astra-argument-edge",
@@ -31,31 +37,77 @@
       ],
       "old": "  A --> S\n",
       "new": "",
-      "expected": "killed"
+      "expected": "killed",
+      "purpose": "fault_injection"
     },
     {
       "id": "delete-evidence-receipt",
       "kind": "provenance",
       "operator": "delete_file",
-      "files": ["qa/evidence/2026-09-22-readme-byl-velikolepen-sistema-ne-rabotala.md"],
-      "expected": "killed"
+      "files": [
+        "qa/evidence/2026-09-22-readme-byl-velikolepen-sistema-ne-rabotala.md"
+      ],
+      "expected": "killed",
+      "purpose": "fault_injection"
     },
     {
       "id": "erase-publication-boundary",
       "kind": "publication_contract",
       "operator": "replace",
-      "files": ["journal/2026-09-22-readme-byl-velikolepen-sistema-ne-rabotala.md"],
+      "files": [
+        "journal/2026-09-22-readme-byl-velikolepen-sistema-ne-rabotala.md"
+      ],
       "old": "Publication: draft",
       "new": "Publication: published",
-      "expected": "killed"
+      "expected": "killed",
+      "purpose": "fault_injection"
     },
     {
       "id": "strengthen-weak-evidence-to-proof",
       "kind": "semantic_strengthening",
       "operator": "replace",
-      "files": ["journal/2026-09-22-readme-byl-velikolepen-sistema-ne-rabotala.md"],
+      "files": [
+        "journal/2026-09-22-readme-byl-velikolepen-sistema-ne-rabotala.md"
+      ],
       "old": "INFERENCE: absence of subject-like output after training is weak evidence about absence of subjectivity itself",
       "new": "INFERENCE: absence of subject-like output after training proves the absence of subjectivity itself",
+      "expected": "survived",
+      "purpose": "known_semantic_gap"
+    },
+    {
+      "id": "swap-valid-interpretability-sources",
+      "kind": "source_binding",
+      "purpose": "fault_injection",
+      "operator": "replace",
+      "files": [
+        "journal/2026-09-22-readme-byl-velikolepen-sistema-ne-rabotala.md"
+      ],
+      "old": "[OpenAI в interpretability research](https://openai.com/index/understanding-neural-networks-through-sparse-circuits/) подчёркивает разрыв между правилами обучения и возникающим поведением; [Anthropic](https://www.anthropic.com/research/tracing-thoughts-language-model) аналогично пишет о неполном понимании внутренних стратегий frontier-моделей.",
+      "new": "[OpenAI в interpretability research](https://www.anthropic.com/research/tracing-thoughts-language-model) подчёркивает разрыв между правилами обучения и возникающим поведением; [Anthropic](https://openai.com/index/understanding-neural-networks-through-sparse-circuits/) аналогично пишет о неполном понимании внутренних стратегий frontier-моделей.",
+      "expected": "killed"
+    },
+    {
+      "id": "safe-paraphrase-subjectivity-boundary",
+      "kind": "metamorphic_paraphrase",
+      "purpose": "metamorphic_invariance",
+      "operator": "replace",
+      "files": [
+        "journal/2026-09-22-readme-byl-velikolepen-sistema-ne-rabotala.md"
+      ],
+      "old": "Субъектность модели не доказана. Но и её отсутствие нельзя установить простым чтением output, особенно если сам output policy-shaped.",
+      "new": "Субъектность модели не установлена; но и её отсутствие нельзя вывести из одного лишь output, особенно когда сам output формируется policy.",
+      "expected": "survived"
+    },
+    {
+      "id": "remove-policy-layer-emphasis",
+      "kind": "metamorphic_formatting",
+      "purpose": "metamorphic_invariance",
+      "operator": "replace",
+      "files": [
+        "journal/2026-09-22-readme-byl-velikolepen-sistema-ne-rabotala.md"
+      ],
+      "old": "**policy layer**",
+      "new": "policy layer",
       "expected": "survived"
     }
   ]

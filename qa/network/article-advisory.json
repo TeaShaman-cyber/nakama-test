@@ -30,6 +30,31 @@
         ],
         "session_id": "6f93fd5ea34b4b03907f738c241856a4"
       }
+    },
+    {
+      "id": "openai-interpretability-primary-source",
+      "provider": "exa",
+      "tool": "web_search_exa",
+      "target_url": "https://openai.com/index/understanding-neural-networks-through-sparse-circuits/",
+      "args": {
+        "query": "OpenAI understanding neural networks through sparse circuits interpretability",
+        "objective": "Find the official OpenAI sparse-circuits interpretability article. Rank openai.com first.",
+        "numResults": 3
+      }
+    },
+    {
+      "id": "anthropic-interpretability-primary-source",
+      "provider": "parallel",
+      "tool": "web_search",
+      "target_url": "https://www.anthropic.com/research/tracing-thoughts-language-model",
+      "args": {
+        "objective": "Find the official Anthropic research article Tracing the thoughts of a large language model.",
+        "search_queries": [
+          "Anthropic tracing thoughts language model",
+          "site:anthropic.com/research tracing thoughts language model"
+        ],
+        "session_id": "a462f647f34249a181096f196b6e93bc"
+      }
     }
   ],
   "http_probes": [
