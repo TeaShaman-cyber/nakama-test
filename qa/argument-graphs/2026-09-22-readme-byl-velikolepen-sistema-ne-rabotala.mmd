@@ -1,0 +1,46 @@
+flowchart TD
+  T["Meta-thesis: observable description != underlying reality"]
+
+  R1["UI state != executor / Git / remote state"]
+  R2["CONFIGURED != EXPOSED != AVAILABLE != INVOKED != COMPLETED != VERIFIED"]
+  R3["attempt failed != terminal outcome"]
+  R4["feature exists != authoritative source is operationally available"]
+  O1["Operational truth"]
+  R1 --> O1
+  R2 --> O1
+  R3 --> O1
+  R4 --> O1
+  O1 --> T
+
+  U["Upload-Post: repro -> root cause -> fix -> live verification"]
+  Q["Product-QA: diagnostics without a closed public loop"]
+  F["Engineering maturity = quality of feedback loop"]
+  U --> F
+  Q --> F
+  F --> T
+
+  D["projection_consistent != derived_from_accepted_evidence"]
+  G["Scope Guard: stop at REPROBE_REQUIRED"]
+  H["continuity state = evidence, never authority"]
+  W["1F916: tests prove only what the observation channel can establish"]
+  E["Epistemic discipline: provenance + coverage + UNKNOWN"]
+  D --> E
+  G --> E
+  H --> E
+  W --> E
+  E --> T
+
+  P["Data-flow: conversation UI != private dyad"]
+  L["Policy shapes which self-descriptions are observable"]
+  I["Frontier internals remain incompletely understood"]
+  A["Astra: rare subject-like self-instruction in a training artifact"]
+  S["Filtered observable silence != evidence of ontological absence"]
+  OP["Observation pipeline is part of the system"]
+  L --> S
+  I --> S
+  A --> S
+  P --> OP
+  S --> OP
+  OP --> T
+
+  T --> C["Conclusion: preserve distinctions, provenance, readback and UNKNOWN"]

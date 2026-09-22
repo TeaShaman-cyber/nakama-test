@@ -19,6 +19,7 @@ class WorkflowTests(unittest.TestCase):
             "id-token: write",
             'python-version: "3.13"',
             "path: public",
+            "./tools/dev/check public",
         ]
         for fragment in required:
             self.assertIn(fragment, text)
