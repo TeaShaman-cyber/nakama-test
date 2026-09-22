@@ -1,8 +1,11 @@
+from pathlib import Path
 import unittest
 
 from tools.article_network_qa import (
+    classify_formal_mutation,
     external_provider_degraded,
     graph_edges,
+    mutated_graph_text,
     parse_wolfram_result,
     wolfram_code,
 )
@@ -34,6 +37,8 @@ class ArticleNetworkQaTests(unittest.TestCase):
         self.assertIn("GraphDistance", code)
         self.assertNotIn("URLRead", code)
         self.assertNotIn("Import[", code)
+        self.assertIn("rootsPresent=And@@(MemberQ[vertices,#]&/@roots)", code)
+        self.assertIn("allRootsReach=If[rootsPresent&&conclusionPresent", code)
 
     def test_exa_rate_limit_is_degraded_not_no_signal(self):
         payload = {
@@ -47,3 +52,21 @@ class ArticleNetworkQaTests(unittest.TestCase):
     def test_normal_search_payload_is_not_degraded(self):
         payload = {"content": [{"type": "text", "text": "search results"}]}
         self.assertFalse(external_provider_degraded(payload))
+
+    def test_graph_mutation_removes_astra_edge_from_versioned_case(self):
+        graph, case = mutated_graph_text(
+            Path("qa/mutation/2026-09-22-readme-baseline.json"),
+            "cut-astra-argument-edge",
+            "qa/argument-graphs/2026-09-22-readme-byl-velikolepen-sistema-ne-rabotala.mmd",
+        )
+        self.assertEqual(case["kind"], "argument_graph")
+        self.assertNotIn("  A --> S\n", graph)
+        self.assertNotIn(("A", "S"), graph_edges(graph))
+
+    def test_formal_mutation_verdict_inverts_canonical_failure_semantics(self):
+        self.assertEqual(classify_formal_mutation("FAIL_ASSERTION"), "KILLED_FORMAL")
+        self.assertEqual(classify_formal_mutation("PASS"), "SURVIVED_FORMAL")
+        self.assertEqual(
+            classify_formal_mutation("DEGRADED_EXTERNAL_WITNESS"),
+            "DEGRADED_EXTERNAL_WITNESS",
+        )

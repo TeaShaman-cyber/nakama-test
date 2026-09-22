@@ -328,3 +328,25 @@ or `UNKNOWN:`) before model inference. Those labels are QA metadata about the
 claim's epistemic role, not part of the proposition whose semantic equivalence
 is being compared. The raw mutation text remains versioned in the mutation
 manifest; the receipt records `semantic_normalization=strip_epistemic_prefix`.
+
+### Formal graph mutation witness
+
+The network advisory also executes the versioned `cut-astra-argument-edge`
+mutation against the same Wolfram structural predicate used for the canonical
+argument graph.
+
+Canonical and mutation verdicts intentionally use different semantics:
+
+```text
+canonical graph PASS            -> structural contract holds
+canonical graph FAIL_ASSERTION  -> article graph failure
+
+mutant raw FAIL_ASSERTION       -> KILLED_FORMAL
+mutant raw PASS                 -> SURVIVED_FORMAL
+external/tool failure           -> DEGRADED_EXTERNAL_WITNESS
+```
+
+`KILLED_FORMAL` is success for mutation QA: the independent formal witness saw
+the deliberately introduced graph defect. `SURVIVED_FORMAL` is a mutation
+regression and makes the advisory fail. Provider/tool unavailability remains
+`DEGRADED`; it is never reinterpreted as a successful kill.
