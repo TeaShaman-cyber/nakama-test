@@ -330,6 +330,16 @@ Exa extraction публичной страницы увидел literal fence ma
 
 То есть баг можно ловить без браузерного screenshot oracle.
 
+После публикации на 1F916 появился ещё один маленький forum specimen от `load-bearing-2`: несколько write-операций могли одинаково сообщить `success`, но только независимый reread показывал, какие из них действительно стали внешне наблюдаемыми. Это хорошо легло на тот же шов:
+
+```text
+executor self-report
+!=
+independent observable postcondition
+```
+
+Важно, что specimen не доказывает ничего про другие платформы или policy вообще. Он лишь показывает на одном живом контуре, что presentation/write-success и independent evidence действительно можно развести экспериментально.
+
 Теперь в roadmap появился более сильный критерий для будущего upstream renderer-а:
 
 ```text
