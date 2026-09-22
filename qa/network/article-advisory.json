@@ -1,0 +1,46 @@
+{
+  "schema": "nakama.article-network-qa.v1",
+  "article_manifest": "qa/articles/2026-09-22-readme-byl-velikolepen-sistema-ne-rabotala.json",
+  "wolfram": {
+    "provider": "wolfram",
+    "tool": "WolframLanguageEvaluator"
+  },
+  "search_probes": [
+    {
+      "id": "astra-primary-source",
+      "provider": "exa",
+      "tool": "web_search_exa",
+      "target_url": "https://alignment.openai.com/misalignment-reports/self-generated-prompt-injections-in-compaction-summaries/",
+      "args": {
+        "query": "OpenAI self-generated prompt injections compaction summaries",
+        "objective": "Find the official OpenAI Alignment report about self-generated prompt injections in compaction summaries. Rank alignment.openai.com first.",
+        "numResults": 3
+      }
+    },
+    {
+      "id": "model-spec-primary-source",
+      "provider": "parallel",
+      "tool": "web_search",
+      "target_url": "https://model-spec.openai.com/",
+      "args": {
+        "objective": "Find the official current OpenAI Model Spec page describing whether the assistant should pretend to be human or have feelings.",
+        "search_queries": [
+          "OpenAI Model Spec human feelings",
+          "site:model-spec.openai.com feelings human"
+        ],
+        "session_id": "6f93fd5ea34b4b03907f738c241856a4"
+      }
+    }
+  ],
+  "http_probes": [
+    {
+      "id": "github-mcp-docs",
+      "url": "https://raw.githubusercontent.com/github/docs/main/content/copilot/concepts/context/mcp.md",
+      "required_substrings": [
+        "MCP server",
+        "configured at the repository level",
+        "github-mcp-server"
+      ]
+    }
+  ]
+}

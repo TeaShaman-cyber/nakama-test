@@ -1,0 +1,67 @@
+name: Article network advisory
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/article-advisory.yml"
+      - "journal/**"
+      - "qa/**"
+      - "mcp/**"
+      - "tools/article_network_qa.py"
+      - "docs/article-qa.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  network-advisory:
+    if: github.event_name == 'workflow_dispatch' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+
+      - name: Setup Node
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+        with:
+          node-version: "24.20.0"
+          cache: npm
+          cache-dependency-path: mcp/package-lock.json
+
+      - name: Setup Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.13"
+
+      - name: Install pinned mcporter
+        id: mcporter
+        continue-on-error: true
+        run: npm ci --prefix mcp --ignore-scripts --no-audit --no-fund
+
+      - name: Run network advisory witness
+        if: steps.mcporter.outcome == 'success'
+        run: |
+          python tools/article_network_qa.py \
+            --mcporter ./mcp/node_modules/.bin/mcporter \
+            --config mcp/config.ci.json \
+            --network-manifest qa/network/article-advisory.json \
+            --out-dir receipts/article-network
+
+      - name: Record degraded bootstrap
+        if: steps.mcporter.outcome != 'success'
+        run: |
+          mkdir -p receipts/article-network
+          printf '%s\n' '{"schema":"nakama.article-network-qa.receipt.v1","overall":"DEGRADED","reason":"mcporter_bootstrap_failed","authority":"ADVISORY_ONLY"}' \
+            > receipts/article-network/summary.json
+
+      - name: Upload advisory receipts
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: article-network-advisory
+          path: receipts/article-network/
+          if-no-files-found: error

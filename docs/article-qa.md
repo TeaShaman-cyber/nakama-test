@@ -107,3 +107,40 @@ EDITORIAL: accepted / changes requested
 ```
 
 Keeping those lines separate is the point of the workflow.
+
+## Network advisory lane
+
+The deterministic gate deliberately does not depend on network providers.
+A separate GitHub Actions workflow, `Article network advisory`, can call public
+MCP services through pinned `mcporter@0.13.8` and stores receipts as an artifact.
+
+Current routes:
+
+```text
+GitHub Actions
+  -> pinned mcporter
+     -> Wolfram Cloud MCP
+     -> Exa public MCP
+     -> Parallel Search public MCP
+  -> direct readback of official GitHub Docs source
+  -> receipts/article-network/*
+```
+
+The lane has different failure semantics from the deterministic gate:
+
+```text
+formal external assertion disproved -> FAIL_ASSERTION
+provider / transport unavailable    -> DEGRADED_EXTERNAL_WITNESS
+search does not surface target      -> NO_SIGNAL
+official docs wording/path changed  -> REPROBE_REQUIRED
+```
+
+Only `FAIL_ASSERTION` is a blocking exit from the witness adapter. The other
+states are preserved as advisory evidence rather than relabeled as article
+failure.
+
+The current Notion connector does not expose a mutation for making a page
+public. Human permission exists to use temporary public publication for
+editorial QA if that capability becomes available later, but the current
+runtime state is `NOT_EXPOSED`. Git remains the canonical CI source, so Notion
+publication is not a dependency of the pipeline.
