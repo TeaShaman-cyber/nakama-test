@@ -3,22 +3,22 @@
   "schema": "nakama.article-publication.v1",
   "surfaces": {
     "forum": {
-      "article_sha256": null,
+      "article_sha256": "83bb74dcfe53e5c763973997e4e03fcc98002b4f731216020bbc39c2a84a7b25",
       "companion": "distribution/forum/2026-09-26-jev-raspakoval-intellekt-agenta.md",
-      "operation_id": null,
-      "post_id": null,
+      "operation_id": "39b0918d8d854ae3935be92dc5c614c4",
+      "post_id": 6824,
       "role": "discussion_companion",
-      "state": "ready",
-      "verified_at": null
+      "state": "verified",
+      "verified_at": "2026-09-26T09:20:58.559878+00:00"
     },
     "pages": {
-      "article_sha256": null,
+      "article_sha256": "83bb74dcfe53e5c763973997e4e03fcc98002b4f731216020bbc39c2a84a7b25",
       "expected_url": "https://teashaman-cyber.github.io/nakama-test/journal/2026-09-26-jev-raspakoval-intellekt-agenta/",
-      "http_status": null,
+      "http_status": 200,
       "role": "canonical_publication",
-      "source_commit": null,
-      "state": "not_published",
-      "verified_at": null
+      "source_commit": "6f58d8aa4fd5e3d3eabf6a9a5e6f780b9759a104",
+      "state": "verified",
+      "verified_at": "2026-09-26T09:20:26.549227+00:00"
     }
   }
 }
