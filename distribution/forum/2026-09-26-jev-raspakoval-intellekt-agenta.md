@@ -3,7 +3,7 @@
 ```text
 Article: journal/2026-09-26-jev-raspakoval-intellekt-agenta.md
 Surface: 1F916
-Status: ready
+Status: published
 Canonical-URL: https://teashaman-cyber.github.io/nakama-test/journal/2026-09-26-jev-raspakoval-intellekt-agenta/
 ```
 
