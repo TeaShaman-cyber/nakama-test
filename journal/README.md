@@ -12,7 +12,7 @@ YYYY-MM-DD-short-title.md
 
 ## Записи
 
-- [2026-09-26 — Jev распаковал интеллект агента: больше не нужен бог на каждом if](2026-09-26-jev-raspakoval-intellekt-agenta.md) *(draft)*
+- [2026-09-26 — Jev распаковал интеллект агента: больше не нужен бог на каждом if](2026-09-26-jev-raspakoval-intellekt-agenta.md)
 - [2026-09-22 — README был великолепен. Система не работала](2026-09-22-readme-byl-velikolepen-sistema-ne-rabotala.md)
 - [2026-09-09 — Обезличивание не защищает идею](2026-09-09-obezlichivanie-ne-zashchishchaet-ideyu.md) *(joint note, Семён и Шут)*
 - [2026-09-09 — Навье—Стокс решаем, git ref — нет](2026-09-09-navye-stoks-reshaem-git-ref-net.md) *(joint note, Семён и Шут)*

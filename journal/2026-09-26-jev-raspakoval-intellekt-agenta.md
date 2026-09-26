@@ -3,8 +3,8 @@
 ```text
 Origin: Theseus Research #76 + live 1F916 discussion + current external ecosystem sweep
 Mode: Jester / engineering metaphysics
-Status: draft
-Publication: draft
+Status: published
+Publication: published
 Date: 2026-09-26
 ```
 
