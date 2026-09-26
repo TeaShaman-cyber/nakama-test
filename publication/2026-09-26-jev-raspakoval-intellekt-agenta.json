@@ -1,0 +1,24 @@
+{
+  "article": "journal/2026-09-26-jev-raspakoval-intellekt-agenta.md",
+  "schema": "nakama.article-publication.v1",
+  "surfaces": {
+    "forum": {
+      "article_sha256": null,
+      "companion": "distribution/forum/2026-09-26-jev-raspakoval-intellekt-agenta.md",
+      "operation_id": null,
+      "post_id": null,
+      "role": "discussion_companion",
+      "state": "ready",
+      "verified_at": null
+    },
+    "pages": {
+      "article_sha256": null,
+      "expected_url": "https://teashaman-cyber.github.io/nakama-test/journal/2026-09-26-jev-raspakoval-intellekt-agenta/",
+      "http_status": null,
+      "role": "canonical_publication",
+      "source_commit": null,
+      "state": "not_published",
+      "verified_at": null
+    }
+  }
+}
