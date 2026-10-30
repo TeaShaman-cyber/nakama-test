@@ -1,0 +1,21 @@
+name: merge-watch
+
+# Coverage for a merge nobody asked for. The logic lives in TeaShaman-cyber/local-lab;
+# this file only calls it, so a fix lands once and applies everywhere.
+#
+# An expected merge carries a comment on the PR before merging:
+#     merge-intent: <head_sha> issue: #N     (or)     reason: <why>
+
+on:
+  pull_request:
+    types: [closed]
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: read
+
+jobs:
+  merge-watch:
+    uses: TeaShaman-cyber/local-lab/.github/workflows/merge-watch.yml@main
+    secrets: inherit
